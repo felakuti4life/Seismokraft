@@ -62,15 +62,17 @@ class SeismicEvent {
 		//replace T with space to make it parsable by date_parse()
 		$tempDate = $this->date;
 		$tempDate[10] = ' ';
+		print_r($tempDate);
 		$parsedDate = new DateTime(date_parse($tempDate));
+		print_r($parsedDate);
 		
-		$parsedDate->modify('-'.$this->daysBeforeEvent.' day');
+		/*$parsedDate->modify('-'.$this->daysBeforeEvent.' day');
 		$farmattedDate=$parsedDate->format('Y-m-d H:i:s');
 		if($formattedDate){
 			$this->timeSeriesStartDate= $formattedDate;
 			$this->timeSeriesStartDate[10]='T';
 		}
-		else {$this->timeSeriesStartDate = $this->date;}
+		else {$this->timeSeriesStartDate = $this->date;}*/
 	}
 	
 	public function setNetworkAndStations(){
@@ -216,7 +218,8 @@ echo "URL: " . $url;
 <?php echo "Magnitude: ", $eventOne->magnitude, "<br>", $eventOne->date; ?>
 </p>
 <p>
-<?php echo "Location: ", $eventOne->location->lat, "<br>", $eventOne->location->lng, "<br>", "Date: ", $eventOne->date, "<br>", "Time series start: ";?>
+<?php echo "Location: ", $eventOne->location->lat, "<br>", $eventOne->location->lng, "<br>", "Date: ", $eventOne->date, "<br>", "Time series start: ";
+ $eventOne->setTimeSeriesStartDate();?>
 </p>
 <p>
 <?php echo "Station URL: ", $eventOne->stationUrlTest; ?>
