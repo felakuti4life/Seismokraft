@@ -40,9 +40,7 @@ class Location {
 
 class SeismicEvent {
 	var $location;
-	var $date;
-	//set how many hours before the seismic event the time series recording starts
-	var $daysBeforeEvent = 1;
+	var $impulseDate;
 	var $timeSeriesStartDate;
 	var $magnitude;
 	var $nearestNetworkCode;
@@ -58,25 +56,14 @@ class SeismicEvent {
 	}
 	
 	public function setTimeSeriesStartDate(){
-		//FIXME
-		//replace T with space to make it parsable by date_parse()
-		$tempDate = $this->date;
-		$tempDate[10] = ' ';
-		print_r($tempDate);
-		$parsedDate = new DateTime(date_parse($tempDate));
-		print_r($parsedDate);
-		
-		/*$parsedDate->modify('-'.$this->daysBeforeEvent.' day');
-		$farmattedDate=$parsedDate->format('Y-m-d H:i:s');
-		if($formattedDate){
-			$this->timeSeriesStartDate= $formattedDate;
-			$this->timeSeriesStartDate[10]='T';
-		}
-		else {$this->timeSeriesStartDate = $this->date;}*/
+		$parsedDate = new DateTime('2013-10-06T14:00:40.1000');
+		$parsedDate->modify('-8 hours');
+		$dateString = $parsedDate->format('c');
+		$this->timeSeriesStartDate = substr_replace($dateString, ".0000", 19);
 	}
 	
 	public function setNetworkAndStations(){
-		$stationUrl="http://service.iris.edu/fdsnws/station/1/query?starttime=2013-06-07T01:00:00&endtime=".$this->date.
+		$stationUrl="http://service.iris.edu/fdsnws/station/1/query?starttime=2013-06-07T01:00:00&endtime=".$this->impulseDate.
 		"&level=station&format=xml&lat=".strval($this->location->lat).
 		"&lon=".strval($this->location->lng).
 		"&maxradius=7.0&nodata=404";
@@ -91,7 +78,7 @@ class SeismicEvent {
 	
 	public function setChannelAndLocation(){
 		$channelUrl="http://service.iris.edu/fdsnws/station/1/query?net=".$this->nearestNetworkCode.
-		"&sta=".$this->nearestStationCode."&starttime=2013-06-07T01:00:00&endtime=".$this->date.
+		"&sta=".$this->nearestStationCode."&starttime=2013-06-07T01:00:00&endtime=".$this->impulseDate.
 		"&level=channel&format=xml&nodata=404";
 		$channelXml= file_get_contents($channelUrl);
 		$channel_table = new SimpleXMLElement($channelXml);
@@ -106,13 +93,13 @@ class SeismicEvent {
 		$this->stationAudioURL="http://service.iris.edu/irisws/timeseries/1/query?net=".$this->nearestNetworkCode.
 		"&sta=".$this->nearestStationCode.
 		"&cha=".$this->channelCode.
-		"&start=".$this->timeSeriesStartDate."&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=3000&loc=".$this->locationCode."&taper=0.5,HAMMING";
+		"&start=".$this->timeSeriesStartDate."&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=3000&loc=".$this->locationCode/*."&taper=0.5,HAMMING"*/;
 		
 		$this->stationPlotURL="http://service.iris.edu/irisws/timeseries/1/query?net=".$this->nearestNetworkCode.
 		"&sta=".$this->nearestStationCode.
 		"&cha=".$this->channelCode.
 		"&start=".$this->timeSeriesStartDate.
-		"&dur=8000&envelope=true&output=plot&loc=".$this->locationCode."&taper=0.5,HAMMING";
+		"&dur=8000&envelope=true&output=plot&loc=".$this->locationCode/*."&taper=0.5,HAMMING"*/;
 	}
 }
 
@@ -130,10 +117,10 @@ $eventThreeIndex = 3;
 $eventOne->location->depth = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->depth->value);
 $eventOne->location->lng = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->longitude->value);
 $eventOne->location->lat = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->latitude->value);
-$eventOne->date = $quake_table->eventParameters->event[$eventOneIndex]->origin->time->value;
+$eventOne->impulseDate = $quake_table->eventParameters->event[$eventOneIndex]->origin->time->value;
 $eventOne->magnitude = floatval($quake_table->eventParameters->event[$eventOneIndex]->magnitude->mag->value);
 $eventOne->setNetworkAndStations();
-//$eventOne->setTimeSeriesStartDate();
+$eventOne->setTimeSeriesStartDate();
 $eventOne->setChannelAndLocation();
 $eventOne->setAudioAndPlotURL();
 
@@ -141,10 +128,10 @@ $eventOne->setAudioAndPlotURL();
 $eventTwo->location->depth = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->depth->value);
 $eventTwo->location->lng = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->longitude->value);
 $eventTwo->location->lat = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->latitude->value);
-$eventTwo->date = $quake_table->eventParameters->event[$eventTwoIndex]->origin->time->value;
+$eventTwo->impulseDate = $quake_table->eventParameters->event[$eventTwoIndex]->origin->time->value;
 $eventTwo->magnitude = floatval($quake_table->eventParameters->event[$eventTwoIndex]->magnitude->mag->value);
 $eventTwo->setNetworkAndStations();
-//$eventTwo->setTimeSeriesStartDate();
+$eventTwo->setTimeSeriesStartDate();
 $eventTwo->setChannelAndLocation();
 $eventTwo->setAudioAndPlotURL();
 
@@ -152,10 +139,10 @@ $eventTwo->setAudioAndPlotURL();
 $eventThree->location->depth = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->depth->value);
 $eventThree->location->lng = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->longitude->value);
 $eventThree->location->lat = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->latitude->value);
-$eventThree->date = $quake_table->eventParameters->event[$eventThreeIndex]->origin->time->value;
+$eventThree->impulseDate = $quake_table->eventParameters->event[$eventThreeIndex]->origin->time->value;
 $eventThree->magnitude = floatval($quake_table->eventParameters->event[$eventThreeIndex]->magnitude->mag->value);
 $eventThree->setNetworkAndStations();
-//$eventThree->setTimeSeriesStartDate();
+$eventThree->setTimeSeriesStartDate();
 $eventThree->setChannelAndLocation();
 $eventThree->setAudioAndPlotURL();
 ?>
@@ -215,11 +202,11 @@ echo "URL: " . $url;
 <?php echo "Event Location: " . $quake_table->eventParameters->event[0]->description->text; ?>
 </p>
 <p>
-<?php echo "Magnitude: ", $eventOne->magnitude, "<br>", $eventOne->date; ?>
+<?php echo "Magnitude: ", $eventOne->magnitude, "<br>", $eventOne->impulseDate; ?>
 </p>
 <p>
-<?php echo "Location: ", $eventOne->location->lat, "<br>", $eventOne->location->lng, "<br>", "Date: ", $eventOne->date, "<br>", "Time series start: ";
- $eventOne->setTimeSeriesStartDate();?>
+<?php echo "Location: ", $eventOne->location->lat, "<br>", $eventOne->location->lng, "<br>", "Date: ", $eventOne->impulseDate, "<br>", "Time series start: ",
+ $eventOne->timeSeriesStartDate;?>
 </p>
 <p>
 <?php echo "Station URL: ", $eventOne->stationUrlTest; ?>
