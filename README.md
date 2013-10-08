@@ -2,10 +2,10 @@
 SEISMOKRAFT
 ===========
 
-Version 0.05
-(c) 2013
-By Ethan Geller
-@felakuti4life
+Version 0.05  
+(c) 2013  
+By Ethan Geller  
+ethangeller.com  
 
 NOTE: Seismokraft is still under development.
 
