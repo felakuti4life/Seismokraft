@@ -1,12 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Seismokraft</title>
+<?php require_once('getSeismicData.php'); ?>
+<script type="text/javascript">
+var eventOneAudio = <?php echo json_encode($eventOne->audioBuffer); ?>;
+var eventTwoAudio = <?php echo json_encode($eventTwo->audioBuffer); ?>;
+var eventThreeAudio = <?php echo json_encode($eventThree->audioBuffer); ?>;
 
 
-</head>
+var eventOneBuffer = null;
+var eventTwoBuffer = null;
+var eventThreeBuffer = null;
+// Fix prefixing
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
-<body>
-</body>
-</html>
+context.decodeAudioData(eventOneAudio, function(buffer){eventOneBuffer = buffer});
+context.decodeAudioData(eventTwoAudio, function(buffer){eventTwoBuffer = buffer});
+context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buffer});
+
+
+function loadSeismicSound(url, eventBuffer) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      eventBuffer = buffer;
+    }, onError);
+  }
+  request.send();
+}
+
+loadSeismicSound(eventOneAudioURL, eventOneBuffer);
+loadSeismicSound(eventTwoAudioURL, eventTwoBuffer);
+loadSeismicSound(eventThreeAudioURL, eventThreeBuffer);
+
+</script>

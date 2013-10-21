@@ -47,6 +47,7 @@ class SeismicEvent {
 	var $locationCode;
 	var $stationAudioURL;
 	var $stationPlotURL;
+	var $audioBuffer;
 	
 	public function __construct(){
 	}
@@ -102,6 +103,8 @@ class SeismicEvent {
 		"&cha=".$this->channelCode.
 		"&start=".$this->timeSeriesStartDate.
 		"&dur=8000&envelope=true&output=plot&loc=".$this->locationCode/*."&taper=0.5,HAMMING"*/;
+		
+		$this->audioBuffer = file_get_contents($this->stationAudioURL);
 	}
 }
 
