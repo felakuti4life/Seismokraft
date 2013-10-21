@@ -1,7 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
 /****************************
 	SEISMOKRAFT 1.0
@@ -52,17 +48,7 @@ class SeismicEvent {
 	var $stationAudioURL;
 	var $stationPlotURL;
 	
-	public function __construct($eventIndex=0){
-		global $quake_table;
-		$this->location->depth = floatval($quake_table->eventParameters->event[$eventIndex]->origin->depth->value);
-		$this->location->lng = floatval($quake_table->eventParameters->event[$eventIndex]->origin->longitude->value);
-		$this->location->lat = floatval($quake_table->eventParameters->event[$eventIndex]->origin->latitude->value);
-		$this->impulseDate = $quake_table->eventParameters->event[$eventIndex]->origin->time->value;
-		$this->magnitude = floatval($quake_table->eventParameters->event[$eventIndex]->magnitude->mag->value);
-		$this->setNetworkAndStations();
-		$this->setTimeSeriesStartDate();
-		$this->setChannelAndLocation();
-		$this->setAudioAndPlotURL();
+	public function __construct(){
 	}
 	
 	public function setTimeSeriesStartDate(){
@@ -122,18 +108,23 @@ class SeismicEvent {
 //TODO: move these to the __construct function
 
 //set Seismic Events
+$eventOne = new SeismicEvent;
 $eventOneIndex = 1;
-$eventOne = new SeismicEvent($eventOneIndex);
-
+$eventTwo = new SeismicEvent;
 $eventTwoIndex = 2;
-$eventTwo = new SeismicEvent($eventTwoIndex);
-
+$eventThree = new SeismicEvent;
 $eventThreeIndex = 3;
-$eventThree = new SeismicEvent($eventThreeIndex);
-
 
 //setting up Seismic Event One
-
+$eventOne->location->depth = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->depth->value);
+$eventOne->location->lng = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->longitude->value);
+$eventOne->location->lat = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->latitude->value);
+$eventOne->impulseDate = $quake_table->eventParameters->event[$eventOneIndex]->origin->time->value;
+$eventOne->magnitude = floatval($quake_table->eventParameters->event[$eventOneIndex]->magnitude->mag->value);
+$eventOne->setNetworkAndStations();
+$eventOne->setTimeSeriesStartDate();
+$eventOne->setChannelAndLocation();
+$eventOne->setAudioAndPlotURL();
 
 //setting up Seismic Event Two
 $eventTwo->location->depth = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->depth->value);
@@ -157,60 +148,3 @@ $eventThree->setTimeSeriesStartDate();
 $eventThree->setChannelAndLocation();
 $eventThree->setAudioAndPlotURL();
 ?>
-
-
-
-<title>Seismokraft</title>
-</head>
-
-<body>
-"hello!"
-<?php
-//tests:
-echo "<p>" . "hello!"."</p>"; ?>
-<p>
-<?php
-echo "URL: " . $url;
-?>
-</p>
-<p>
-<?php echo "Event Location: " . $quake_table->eventParameters->event[0]->description->text; ?>
-</p>
-<p>
-<?php echo "Magnitude: ", $eventOne->magnitude, "<br>", $eventOne->impulseDate; ?>
-</p>
-<p>
-<?php echo "Location: ", $eventOne->location->lat, "<br>", $eventOne->location->lng, "<br>", "Date: ", $eventOne->impulseDate, "<br>", "Time series start: ",
- $eventOne->timeSeriesStartDate;?>
-</p>
-<p>
-<?php echo "Station URL: ", $eventOne->stationUrlTest; ?>
-</p>
-<p>
-<?php echo "Channel URL: ", $eventOne->channelUrlTest; ?>
-</p>
-<p>
-<?php echo "Nearest Network Code: ", $eventOne->nearestNetworkCode, "<br>", "Nearest Station Code:", $eventOne->nearestStationCode; ?>
-</p>
-<p>
-<?php echo "Nearest Channel Code: ", $eventOne->channelCode, "<br>", "Nearest Location Code:", $eventOne->locationCode; ?>
-</p>
-<p>
-<?php echo "Seismic Event One Audio Link: <a>", $eventOne->stationAudioURL, "</a>"; ?>
-</p>
-<img src="<?php echo $eventOne->stationPlotURL; ?>" />
-<?php echo "Image source: ", $eventOne->stationPlotURL; ?>
-
-<p>
-<?php echo "Seismic Event Two Audio Link: <a>", $eventTwo->stationAudioURL, "</a>"; ?>
-</p>
-<img src="<?php echo $eventTwo->stationPlotURL; ?>" />
-<?php echo "Image source: ", $eventTwo->stationPlotURL; ?>
-
-<p>
-<?php echo "Seismic Event Three Audio Link: <a href=\"", $eventTwo->stationAudioURL, "\"> here </a>"; ?>
-</p>
-<img src="<?php echo $eventTwo->stationPlotURL; ?>" />
-<?php echo "Image source: ", $eventTwo->stationPlotURL; ?>
-</body>
-</html>
