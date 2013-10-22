@@ -16,6 +16,8 @@
 	EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 	EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	
+	SUMMARY: This script handles all of the serverside queries to the IRIS server and pulls metadata about the recent seismic events, as well as time series data.
 
 */
 $date = date('Y-m-d');
@@ -104,7 +106,7 @@ class SeismicEvent {
 		"&start=".$this->timeSeriesStartDate.
 		"&dur=8000&envelope=true&output=plot&loc=".$this->locationCode/*."&taper=0.5,HAMMING"*/;
 		
-		$this->audioBuffer = file_get_contents($this->stationAudioURL);
+		$this->audioBuffer = file($this->stationAudioURL);
 	}
 }
 

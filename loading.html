@@ -5,7 +5,13 @@
 <title>Loading Seismokraft...</title>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
-$('seismokraftApp').load("AudioProcessing.php");
+	$(document).ready(function(){
+		$('#seismokraftApp').load("/AudioProcessing.php", function(){
+			$("#loadingPrompt").fadeOut(400);
+			$("#loadingPrompt").remove();
+		});	
+	});
+
 </script>
 <style type="text/css">
 #container {
