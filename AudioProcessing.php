@@ -1,5 +1,11 @@
 <?php require_once('getSeismicData.php'); ?>
-<script type="text/javascript">
+<html>
+<head>
+<title>Seismokraft App</title>
+</head>
+<body>
+<div id="applicationWindow"> 
+  <script type="text/javascript">
 /****************************
 	SEISMOKRAFT 1.0
 	by Ethan Geller
@@ -54,11 +60,12 @@ var filter = context.createBiquadFilter();
 there are three seperate gain nodes for each event source, but they are all mixed down into the same filter
 
 road map:
-eventOne->gainNodeOne->mainFilter->destination
-eventTwo->gainNodeTwo->mainFilter->destination
-eventThree->gainNodeThree->mainFilter->destination
+eventOne->gainNodeOne->mainFilter
+eventTwo->gainNodeTwo->mainFilter
+eventThree->gainNodeThree->mainFilter
 
-
+then,
+mainFilter->gainNodeMain->destination
 */
 function toggleFilter(element){
 	gainNodeOne.disconnect(0);
@@ -98,4 +105,45 @@ function stopSound(anysource){
 		anysource.stop = anysource.noteOff;
 	anysource.stop(0);
 }
+
+/***************************
+GOOGLE MAP IMPLEMENTATION
+*/
+function initialize() {
+  var mapOptions = {
+    zoom: 0,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  }
+  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+}
+
+function loadScript() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=TRUE";
+  document.body.appendChild(script);
+}
+
+window.onload = loadScript;
 </script>
+  <div id="eventsInfo">
+    <div class="eventInfoBlock" id="eventOneSummary">Event One</div>
+    <div class="eventInfoBlock" id="eventTwoSummary">Event Two</div>
+    <div class="eventInfoBlock" id="eventThreeSummary">Event Three</div>
+  </div>
+  <div id="map-canvas" style="width: 80%; height: 30%"/>
+  <div id="transportWindow">
+    <div class="transport" id="transportOne">Content for  id "transportWindow" Goes Here</div>
+    <div class="transport" id="transportTwo">Content for  class "transport" id "transportTwo" Goes Here</div>
+    <div class="transport" id="transportThree">Content for  class "transport" id "transportThree" Goes Here</div>
+  </div>
+  <div id="channelFader">Content for  id "channelFader" Goes Here</div>
+  <div id="tunerSlider">Content for  id "tunerSlider" Goes Here</div>
+  <div id="filterWindow">
+    <div class="parameters">Content for  class "parameters" Goes Here</div>
+    <div id="fftAnalysis">Content for  id "fftAnalysis" Goes Here</div>
+  </div>
+  <div id="mainVolume">Content for  id "mainVolume" Goes Here</div>
+</div>
+</body>
+</html>
