@@ -38,6 +38,7 @@ class Location {
 
 class SeismicEvent {
 	var $location;
+	var $locationDescription;
 	var $impulseDate;
 	var $timeSeriesStartDate;
 	var $magnitude;
@@ -106,7 +107,7 @@ class SeismicEvent {
 		"&start=".$this->timeSeriesStartDate.
 		"&dur=8000&envelope=true&output=plot&loc=".$this->locationCode/*."&taper=0.5,HAMMING"*/;
 		
-		$this->audioBuffer = file($this->stationAudioURL);
+		$this->audioBuffer = file_get_contents($this->stationAudioURL);
 	}
 }
 
@@ -114,16 +115,18 @@ class SeismicEvent {
 
 //set Seismic Events
 $eventOne = new SeismicEvent;
-$eventOneIndex = 1;
+$eventOneIndex = 0;
 $eventTwo = new SeismicEvent;
 $eventTwoIndex = 2;
 $eventThree = new SeismicEvent;
 $eventThreeIndex = 3;
 
 //setting up Seismic Event One
+$eventOne->location= new Location();
 $eventOne->location->depth = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->depth->value);
 $eventOne->location->lng = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->longitude->value);
 $eventOne->location->lat = floatval($quake_table->eventParameters->event[$eventOneIndex]->origin->latitude->value);
+$eventOne->locationDescription = $quake_table->eventParameters->event[$eventOneIndex]->description->text;
 $eventOne->impulseDate = $quake_table->eventParameters->event[$eventOneIndex]->origin->time->value;
 $eventOne->magnitude = floatval($quake_table->eventParameters->event[$eventOneIndex]->magnitude->mag->value);
 $eventOne->setNetworkAndStations();
@@ -132,9 +135,11 @@ $eventOne->setChannelAndLocation();
 $eventOne->setAudioAndPlotURL();
 
 //setting up Seismic Event Two
+$eventTwo->location= new Location();
 $eventTwo->location->depth = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->depth->value);
 $eventTwo->location->lng = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->longitude->value);
 $eventTwo->location->lat = floatval($quake_table->eventParameters->event[$eventTwoIndex]->origin->latitude->value);
+$eventTwo->locationDescription = $quake_table->eventParameters->event[$eventTwoIndex]->description->text;
 $eventTwo->impulseDate = $quake_table->eventParameters->event[$eventTwoIndex]->origin->time->value;
 $eventTwo->magnitude = floatval($quake_table->eventParameters->event[$eventTwoIndex]->magnitude->mag->value);
 $eventTwo->setNetworkAndStations();
@@ -143,9 +148,11 @@ $eventTwo->setChannelAndLocation();
 $eventTwo->setAudioAndPlotURL();
 
 //setting up Seismic Event Three
+$eventThree->location= new Location();
 $eventThree->location->depth = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->depth->value);
 $eventThree->location->lng = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->longitude->value);
 $eventThree->location->lat = floatval($quake_table->eventParameters->event[$eventThreeIndex]->origin->latitude->value);
+$eventThree->locationDescription = $quake_table->eventParameters->event[$eventThreeIndex]->description->text;
 $eventThree->impulseDate = $quake_table->eventParameters->event[$eventThreeIndex]->origin->time->value;
 $eventThree->magnitude = floatval($quake_table->eventParameters->event[$eventThreeIndex]->magnitude->mag->value);
 $eventThree->setNetworkAndStations();

@@ -1,5 +1,6 @@
 <?php require_once('getSeismicData.php'); ?>
-<html>
+<!DOCTYPE html>
+
 <head>
 <title>Seismokraft App</title>
 </head>
@@ -27,9 +28,9 @@
 	SUMMARY: This script is passed the seismic data/ArrayBuffers from getSeismicData.php and handles all of the webAudio API implementation.
 
 */
-var eventOneAudio = <?php echo $eventOne->audioBuffer; ?>;
-var eventTwoAudio = <?php echo $eventTwo->audioBuffer; ?>;
-var eventThreeAudio = <?php echo $eventThree->audioBuffer; ?>;
+var eventOneAudio = <?php echo json_encode($eventOne->audioBuffer); ?>;
+var eventTwoAudio = <?php echo json_encode($eventTwo->audioBuffer); ?>;
+var eventThreeAudio = <?php echo json_encode($eventThree->audioBuffer); ?>;
 
 
 var eventOneBuffer = null;
@@ -106,6 +107,24 @@ function stopSound(anysource){
 	anysource.stop(0);
 }
 
+function fadeBetweenSources(element){
+	var x = parseInt(element.value) / parseInt(element.max);
+  // Using an equal-power crossfading curve:
+  var gain1 = Math.cos(x * 0.33*Math.PI);
+  var gain2 = Math.cos((x-0.33)*0.33*Math.PI)
+  var gain3 = Math.cos((1.0 - x) * 0.67*Math.PI);
+  gainNodeOne.gain.value = gain1;
+  gainNodeTwo.gain.value = gain2;
+  gainNodeThree.gain.value = gain3;
+}
+
+function tuneSources(element){
+	var rate = (parseInt(element.value) / parseInt(element.max)) * 6.0;
+	sourceOne.playbackRate.value = rate;
+	sourceTwo.playbackRate.value = rate;
+	sourceThree.playbackRate.value = rate;
+}
+
 /***************************
 GOOGLE MAP IMPLEMENTATION
 */
@@ -114,6 +133,36 @@ function initialize() {
     zoom: 0,
     mapTypeId: google.maps.MapTypeId.SATELLITE
   }
+  
+  var flagImg = "/images/mapMarkerIcon.png"
+  
+  var eventOneCoordinates= new google.maps.LatLng(<?php echo $eventOne->location->lat.", ".$eventOne->location->lng; ?>);
+  var eventTwoCoordinates= new google.maps.LatLng(<?php echo $eventTwo->location->lat.", ".$eventTwo->location->lng; ?>);
+  var eventThreeCoordinates= new google.maps.LatLng(<?php echo $eventThree->location->lat.", ".$eventThree->location->lng; ?>);
+  
+  
+  var markerOne = new google.maps.Marker({
+    position: eventOneCoordinates,
+    map: map,
+    title:"Event One",
+	icon: flagImg
+	});
+	
+  var markerTwo = new google.maps.Marker({
+    position: eventTwoCoordinates,
+    map: map,
+    title:"Event Two",
+	icon: flagImg
+	});
+
+	var markerThree = new google.maps.Marker({
+    position: eventThreeCoordinates,
+    map: map,
+    title:"Event One",
+	icon: flagImg
+	});
+	
+	
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
 
@@ -123,13 +172,45 @@ function loadScript() {
   script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=TRUE";
   document.body.appendChild(script);
 }
-
+/******
+NOTE: Remember to make an init() function, delete the function below, and call the init() at the div
+*/
 window.onload = loadScript;
 </script>
   <div id="eventsInfo">
-    <div class="eventInfoBlock" id="eventOneSummary">Event One</div>
-    <div class="eventInfoBlock" id="eventTwoSummary">Event Two</div>
-    <div class="eventInfoBlock" id="eventThreeSummary">Event Three</div>
+    <div class="eventInfoBlock" id="eventOneSummary">
+      <h1>1</h1>
+      <h3>M<?php echo $eventOne->magnitude; ?></h3>
+      <h4><?php echo $eventOne->locationDescription; ?></h4>
+      <p>at
+        <?php 
+				$DateEventOne = date_create($eventOne->impulseDate);
+				echo date_format($DateEventOne, 'g:ia \o\n l\, F jS\, Y'); 
+				?>
+      </p>
+    </div>
+    <div class="eventInfoBlock" id="eventTwoSummary">
+    <h1>2</h1>
+      <h3>M<?php echo $eventTwo->magnitude; ?></h3>
+      <h4><?php echo $eventTwo->locationDescription; ?></h4>
+      <p>at
+        <?php 
+				$DateEventTwo = date_create($eventOne->impulseDate);
+				echo date_format($DateEventTwo, 'g:ia \o\n l\, F jS\, Y'); 
+				?>
+      </p>
+    </div>
+    <div class="eventInfoBlock" id="eventThreeSummary">
+    <h1>3</h1>
+      <h3>M<?php echo $eventThree->magnitude; ?></h3>
+      <h4><?php echo $eventThree->locationDescription; ?></h4>
+      <p>at
+        <?php 
+				$DateEventThree = date_create($eventThree->impulseDate);
+				echo date_format($DateEventThree, 'g:ia \o\n l\, F jS\, Y'); 
+				?>
+      </p>
+    </div>
   </div>
   <div id="map-canvas" style="width: 80%; height: 30%"/>
   <div id="transportWindow">
