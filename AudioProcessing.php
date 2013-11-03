@@ -31,9 +31,36 @@
 	SUMMARY: This script is passed the seismic data/ArrayBuffers from getSeismicData.php and handles all of the webAudio API implementation.
 
 */
+var onError = console.log("Error!")
+
+
+/*********
+load file directly into script- currently ineffective
+
 var eventOneAudio = <?php echo $eventOne->audioBuffer; ?>;
 var eventTwoAudio = <?php echo $eventTwo->audioBuffer; ?>;
 var eventThreeAudio = <?php echo $eventThree->audioBuffer; ?>;
+*/
+
+//alternate method via CORS request
+var eventOneAudioURL = "<?php echo $eventOne->stationAudioURL; ?>"
+var eventTwoAudioURL = "<?php echo $eventTwo->stationAudioURL; ?>"
+var eventThreeAudioURL = "<?php echo $eventThree->stationAudioURL; ?>"
+
+function loadEvent(url, eventBuffer) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.responseType = 'arraybuffer';
+
+  // Decode asynchronously
+  request.onload = function() {
+    context.decodeAudioData(request.response, function(buffer) {
+      eventBuffer = buffer;
+    }, onError);
+  }
+  request.send();
+}
+
 
 
 var eventOneBuffer = null;
@@ -43,9 +70,14 @@ var eventThreeBuffer = null;
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
 
+/*
 context.decodeAudioData(eventOneAudio, function(buffer){eventOneBuffer = buffer});
 context.decodeAudioData(eventTwoAudio, function(buffer){eventTwoBuffer = buffer});
 context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buffer});
+*/
+loadEvent(eventOneAudioURL, eventOneBuffer);
+loadEvent(eventTwoAudioURL, eventTwoBuffer);
+loadEvent(eventThreeAudioURL, eventThreeBuffer);
 
 var sourceOne = null;
 var sourceTwo = null;
@@ -172,7 +204,7 @@ function initialize() {
 function loadScript() {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=TRUE";
+  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=false";
   document.body.appendChild(script);
 }
 /******

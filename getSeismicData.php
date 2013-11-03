@@ -66,7 +66,7 @@ class SeismicEvent {
 		$stationUrl="http://service.iris.edu/fdsnws/station/1/query?starttime=2013-06-07T01:00:00&endtime=".$this->impulseDate.
 		"&level=station&format=xml&lat=".strval($this->location->lat).
 		"&lon=".strval($this->location->lng).
-		"&maxradius=7.0&nodata=404";
+		"&maxradius=6.0&nodata=404";
 		$stationXml = file_get_contents($stationUrl);
 		$station_table = new SimpleXMLElement($stationXml);
 		
@@ -88,10 +88,10 @@ class SeismicEvent {
 		$this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
 		$this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
 		$i = 1;
-		while($this->locationCode=''){
-		$this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
-		$this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
-		$i++;
+		while($this->locationCode=""){
+			$this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
+			$this->locationCode = $channel_table->xpath('//Channel/@locationCode[. != ""]'); //$channel_table->Network->Station->Channel[$i]['locationCode'];
+			$i++;
 		}
 	}
 	
