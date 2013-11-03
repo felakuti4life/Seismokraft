@@ -185,6 +185,11 @@ window.onload = loadScript;
 jQuery Objects
 */
 
+	ChannelFader = new Object();
+	ChannelFader.slider = $("#channelFaderSlider").slider;
+	ChannelFader.value = ChannelFader.slider("option", "value");
+	ChannelFader.max = ChannelFader.slider("option", "max");
+	
 	$(function(){
 		$("#channelFaderSlider").slider({
 			max:500,
@@ -193,11 +198,6 @@ jQuery Objects
 			});
 		});
 	
-	ChannelFader = new Object();
-	ChannelFader.slider = $("#channelFaderSlider").slider;
-	ChannelFader.value = ChannelFader.slider("option", "value");
-	ChannelFader.max = ChannelFader.slider("option", "max");
-
 </script>
   <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
