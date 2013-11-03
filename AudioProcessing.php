@@ -3,6 +3,9 @@
 
 <head>
 <title>Seismokraft App</title>
+<link rel="stylesheet" type="text/css" href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
 <body>
 <div id="applicationWindow"> 
@@ -28,9 +31,9 @@
 	SUMMARY: This script is passed the seismic data/ArrayBuffers from getSeismicData.php and handles all of the webAudio API implementation.
 
 */
-var eventOneAudio = <?php echo json_encode($eventOne->audioBuffer); ?>;
-var eventTwoAudio = <?php echo json_encode($eventTwo->audioBuffer); ?>;
-var eventThreeAudio = <?php echo json_encode($eventThree->audioBuffer); ?>;
+var eventOneAudio = <?php echo $eventOne->audioBuffer; ?>;
+var eventTwoAudio = <?php echo $eventTwo->audioBuffer; ?>;
+var eventThreeAudio = <?php echo $eventThree->audioBuffer; ?>;
 
 
 var eventOneBuffer = null;
@@ -190,7 +193,7 @@ window.onload = loadScript;
       </p>
     </div>
     <div class="eventInfoBlock" id="eventTwoSummary">
-    <h1>2</h1>
+      <h1>2</h1>
       <h3>M<?php echo $eventTwo->magnitude; ?></h3>
       <h4><?php echo $eventTwo->locationDescription; ?></h4>
       <p>at
@@ -201,7 +204,7 @@ window.onload = loadScript;
       </p>
     </div>
     <div class="eventInfoBlock" id="eventThreeSummary">
-    <h1>3</h1>
+      <h1>3</h1>
       <h3>M<?php echo $eventThree->magnitude; ?></h3>
       <h4><?php echo $eventThree->locationDescription; ?></h4>
       <p>at
@@ -218,7 +221,22 @@ window.onload = loadScript;
     <div class="transport" id="transportTwo">Content for  class "transport" id "transportTwo" Goes Here</div>
     <div class="transport" id="transportThree">Content for  class "transport" id "transportThree" Goes Here</div>
   </div>
-  <div id="channelFader">Content for  id "channelFader" Goes Here</div>
+  <div id="channelFader">
+  	<script type="text/javascript">
+	$(function(){
+		$("#channelFaderSlider").slider({
+			max:500,
+			animate: "slow",
+			change: fadeBetweenSources(channelFaderSlider)
+		});
+		});
+	var channelFaderSlider = $("#channelFaderSlider").slider();
+	var channelFaderSlider.value = channelFaderSlider("option", "value");
+	var channelFaderSlider.min = channelFaderSlider("option", "min");
+	var channelFaderSlider.max = channelFaderSlider("option", "max");
+	</script>
+    <div id="channelFaderSlider"></div>
+  </div>
   <div id="tunerSlider">Content for  id "tunerSlider" Goes Here</div>
   <div id="filterWindow">
     <div class="parameters">Content for  class "parameters" Goes Here</div>
