@@ -179,6 +179,25 @@ function loadScript() {
 NOTE: Remember to make an init() function, delete the function below, and call the init() at the div
 */
 window.onload = loadScript;
+
+
+/*******
+jQuery Objects
+*/
+
+	$(function(){
+		$("#channelFaderSlider").slider({
+			max:500,
+			animate: "slow",
+			change: function(){fadeBetweenSources(channelFader);}
+			});
+		});
+	
+	ChannelFader = new Object();
+	ChannelFader.slider = $("#channelFaderSlider").slider;
+	ChannelFader.value = ChannelFader.slider("option", "value");
+	ChannelFader.max = ChannelFader.slider("option", "max");
+
 </script>
   <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
@@ -222,19 +241,6 @@ window.onload = loadScript;
     <div class="transport" id="transportThree">Content for  class "transport" id "transportThree" Goes Here</div>
   </div>
   <div id="channelFader">
-  	<script type="text/javascript">
-	$(function(){
-		$("#channelFaderSlider").slider({
-			max:500,
-			animate: "slow",
-			change: fadeBetweenSources(channelFaderSlider)
-		});
-		});
-	var channelFaderSlider = $("#channelFaderSlider").slider();
-	var channelFaderSlider.value = channelFaderSlider("option", "value");
-	var channelFaderSlider.min = channelFaderSlider("option", "min");
-	var channelFaderSlider.max = channelFaderSlider("option", "max");
-	</script>
     <div id="channelFaderSlider"></div>
   </div>
   <div id="tunerSlider">Content for  id "tunerSlider" Goes Here</div>
