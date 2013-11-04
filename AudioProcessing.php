@@ -59,16 +59,16 @@
 	margin-right: 2%;
 }
 #transportOne {
- background-image: <?php echo $eventOne->stationPlotURL;
-?>;
+ background-image: "<?php echo $eventOne->stationPlotURL;
+?>;"
 }
 #transportTwo {
- background-image: <?php echo $eventTwo->stationPlotURL;
-?>;
+ background-image: "<?php echo $eventTwo->stationPlotURL;
+?>;"
 }
 #transportThree {
- background-image: <?php echo $eventThree->stationPlotURL;
-?>;
+ background-image: "<?php echo $eventThree->stationPlotURL;
+?>;"
 }
 #map-canvas {
 	width: 80%;
@@ -288,6 +288,13 @@ jQuery Objects
 			});
 		});
 	
+	$(function(){
+		$("#transportSliderOne").slider({
+			max: sourceOne.buffer.duration,
+			
+			
+		});
+	});
 </script>
   <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
@@ -324,7 +331,7 @@ jQuery Objects
       </p>
     </div>
   </div>
-  <div id="map-canvas"/>
+  <div id="map-canvas"></div>
   <div id="transportWindow">
     <div class="transport" id="transportOne"><div id="transportSliderOne"></div></div>
     <div class="transport" id="transportTwo"><div id="transportSliderTwo"></div></div>
