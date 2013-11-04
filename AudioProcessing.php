@@ -4,11 +4,83 @@
 <head>
 <title>Seismokraft App</title>
 <link rel="stylesheet" type="text/css" href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
+<style type="text/css">
+.eventInfoBlock {
+	padding: 5px;
+	margin-right: 4%;
+	float: left;
+	width: 20%;
+	height: 200px;
+	border: 2px solid #CCCCCC;
+	border-radius: 5px;
+	background-color: #FFE292;
+}
+.eventInfoBlock h1 {
+	padding: 1px;
+	text-align: center;
+	font-weight: bolder;
+	font-variant: small-caps;
+	color: #333333;
+	text-decoration: underline;
+}
+.eventInfoBlock h3 {
+	letter-spacing: 0.4em;
+	text-align: center;
+	font-weight: bolder;
+	text-decoration: underline overline;
+	color: #000000;
+}
+.eventInfoBlock h4 {
+	text-transform: capitalize;
+	font-size: 14px;
+	text-align: center;
+	font-variant: small-caps;
+}
+.eventInfoBlock p {
+	font-size: 12.5px;
+	font-style: italic;
+	color: #0099FF;
+	text-align: right;
+	float: right;
+	padding-top: -5px;
+}
+#transportWindow {
+	height: 400px;
+	width: 90%;
+	margin-top: 20px;
+	border: 2px solid #CCCCCC;
+	clear: both;
+	text-align: center;
+	padding-left: 2%;
+}
+.transport{
+	width: 30%;
+	float: left;
+	margin-right: 2%;
+}
+#transportOne {
+ background-image: <?php echo $eventOne->stationPlotURL;
+?>;
+}
+#transportTwo {
+ background-image: <?php echo $eventTwo->stationPlotURL;
+?>;
+}
+#transportThree {
+ background-image: <?php echo $eventThree->stationPlotURL;
+?>;
+}
+#map-canvas {
+	width: 80%;
+}
+</style>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
 <body>
 <div id="applicationWindow"> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=false"
+  type="text/javascript"></script> 
   <script type="text/javascript">
 /****************************
 	SEISMOKRAFT 1.0
@@ -31,16 +103,9 @@
 	SUMMARY: This script is passed the seismic data/ArrayBuffers from getSeismicData.php and handles all of the webAudio API implementation.
 
 */
-var onError = console.log("Error!")
 
 
-/*********
-load file directly into script- currently ineffective
 
-var eventOneAudio = <?php echo $eventOne->audioBuffer; ?>;
-var eventTwoAudio = <?php echo $eventTwo->audioBuffer; ?>;
-var eventThreeAudio = <?php echo $eventThree->audioBuffer; ?>;
-*/
 
 //alternate method via CORS request
 var eventOneAudioURL = "<?php echo $eventOne->stationAudioURL; ?>"
@@ -56,7 +121,7 @@ function loadEvent(url, eventBuffer) {
   request.onload = function() {
     context.decodeAudioData(request.response, function(buffer) {
       eventBuffer = buffer;
-    }, onError);
+    }, function(){console.log("Error!");});
   }
   request.send();
 }
@@ -130,6 +195,7 @@ function playSound(anybuffer, anysource, anygain) {
   anysource.loop = true;
   anysource.buffer = anybuffer;
   anysource.connect(anygain);
+  anygain.connect(filter);
   
   if(!anysource.start)
   	anysource.start=anysource.noteOn;
@@ -201,16 +267,8 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
 
-function loadScript() {
-  var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=false";
-  document.body.appendChild(script);
-}
-/******
-NOTE: Remember to make an init() function, delete the function below, and call the init() at the div
-*/
-window.onload = loadScript;
+google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
 /*******
@@ -219,8 +277,8 @@ jQuery Objects
 
 	ChannelFader = new Object();
 	ChannelFader.slider = $("#channelFaderSlider").slider;
-	ChannelFader.value = ChannelFader.slider("option", "value");
-	ChannelFader.max = ChannelFader.slider("option", "max");
+	ChannelFader.value = ChannelFader.slider('value');
+	ChannelFader.max = ChannelFader.slider('max');
 	
 	$(function(){
 		$("#channelFaderSlider").slider({
@@ -266,11 +324,11 @@ jQuery Objects
       </p>
     </div>
   </div>
-  <div id="map-canvas" style="width: 80%; height: 30%"/>
+  <div id="map-canvas"/>
   <div id="transportWindow">
-    <div class="transport" id="transportOne">Content for  id "transportWindow" Goes Here</div>
-    <div class="transport" id="transportTwo">Content for  class "transport" id "transportTwo" Goes Here</div>
-    <div class="transport" id="transportThree">Content for  class "transport" id "transportThree" Goes Here</div>
+    <div class="transport" id="transportOne"><div id="transportSliderOne"></div></div>
+    <div class="transport" id="transportTwo"><div id="transportSliderTwo"></div></div>
+    <div class="transport" id="transportThree"><div id="transportSliderThree"></div></div>
   </div>
   <div id="channelFader">
     <div id="channelFaderSlider"></div>
