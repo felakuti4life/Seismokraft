@@ -53,22 +53,25 @@
 	text-align: center;
 	padding-left: 2%;
 }
-.transport{
+.transport {
 	width: 30%;
 	float: left;
 	margin-right: 2%;
 }
 #transportOne {
- background-image: "<?php echo $eventOne->stationPlotURL;
-?>;"
+ background-image: "<?php echo $eventOne->stationPlotURL
+?>;
+"
 }
 #transportTwo {
- background-image: "<?php echo $eventTwo->stationPlotURL;
-?>;"
+ background-image: "<?php echo $eventTwo->stationPlotURL
+?>;
+"
 }
 #transportThree {
- background-image: "<?php echo $eventThree->stationPlotURL;
-?>;"
+ background-image: "<?php echo $eventThree->stationPlotURL
+?>;
+"
 }
 #map-canvas {
 	width: 80%;
@@ -108,9 +111,9 @@
 
 
 //alternate method via CORS request
-var eventOneAudioURL = "<?php echo $eventOne->stationAudioURL; ?>"
-var eventTwoAudioURL = "<?php echo $eventTwo->stationAudioURL; ?>"
-var eventThreeAudioURL = "<?php echo $eventThree->stationAudioURL; ?>"
+var eventOneAudioURL = "<?php echo $eventOne->stationAudioURL ?>"
+var eventTwoAudioURL = "<?php echo $eventTwo->stationAudioURL ?>"
+var eventThreeAudioURL = "<?php echo $eventThree->stationAudioURL ?>"
 
 function loadEvent(url, eventBuffer) {
   var request = new XMLHttpRequest();
@@ -208,8 +211,8 @@ function stopSound(anysource){
 	anysource.stop(0);
 }
 
-function fadeBetweenSources(element){
-	var x = parseInt(element.value) / parseInt(element.max);
+function fadeBetweenSources(value, maximum){
+	var x = parseInt(value) / parseInt(maximum);
   // Using an equal-power crossfading curve:
   var gain1 = Math.cos(x * 0.33*Math.PI);
   var gain2 = Math.cos((x-0.33)*0.33*Math.PI)
@@ -275,18 +278,38 @@ google.maps.event.addDomListener(window, 'load', initialize);
 jQuery Objects
 */
 
-	ChannelFader = new Object();
-	ChannelFader.slider = $("#channelFaderSlider").slider;
-	ChannelFader.value = ChannelFader.slider('value');
-	ChannelFader.max = ChannelFader.slider('max');
+	$(document).ready(function() {
+		playSound(EventOneBuffer, SourceOne, GainNodeOne);
+		playSound(EventTwoBuffer, SourceTwo, GainNodeTwo);
+		playSound(EventThreeBuffer, SourceThree, GainNodeThree);
+        $(function(){
+		$("#channelFaderSlider").slider({
+			max:500,
+			animate: "slow"
+			});
+		});
+		
+	$("#channelFaderSlider").on("slidechange", 
+		fadeBetweenSources($("#channelFaderSlider").slider("option", "value"), $("#channelFaderSlider").slider("option", "max"));
+	
+	$(function(){
+		$("#transportSliderOne").slider({
+			max: sourceOne.buffer.duration,
+			
+			
+		});
+	});
+    });
 	
 	$(function(){
 		$("#channelFaderSlider").slider({
 			max:500,
 			animate: "slow",
-			change: function(){fadeBetweenSources(channelFader);}
 			});
 		});
+		
+	$("#channelFaderSlider").on("slidechange", 
+		fadeBetweenSources($("#channelFaderSlider).slider("option", "value"), $("#channelFaderSlider).slider("option", "max"));
 	
 	$(function(){
 		$("#transportSliderOne").slider({
@@ -333,9 +356,15 @@ jQuery Objects
   </div>
   <div id="map-canvas"></div>
   <div id="transportWindow">
-    <div class="transport" id="transportOne"><div id="transportSliderOne"></div></div>
-    <div class="transport" id="transportTwo"><div id="transportSliderTwo"></div></div>
-    <div class="transport" id="transportThree"><div id="transportSliderThree"></div></div>
+    <div class="transport" id="transportOne">
+      <div id="transportSliderOne"></div>
+    </div>
+    <div class="transport" id="transportTwo">
+      <div id="transportSliderTwo"></div>
+    </div>
+    <div class="transport" id="transportThree">
+      <div id="transportSliderThree"></div>
+    </div>
   </div>
   <div id="channelFader">
     <div id="channelFaderSlider"></div>
