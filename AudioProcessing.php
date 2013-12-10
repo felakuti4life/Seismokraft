@@ -4,79 +4,7 @@
 <head>
 <title>Seismokraft App</title>
 <link rel="stylesheet" type="text/css" href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
-<style type="text/css">
-.eventInfoBlock {
-	padding: 5px;
-	margin-right: 4%;
-	float: left;
-	width: 20%;
-	height: 200px;
-	border: 2px solid #CCCCCC;
-	border-radius: 5px;
-	background-color: #FFE292;
-}
-.eventInfoBlock h1 {
-	padding: 1px;
-	text-align: center;
-	font-weight: bolder;
-	font-variant: small-caps;
-	color: #333333;
-	text-decoration: underline;
-}
-.eventInfoBlock h3 {
-	letter-spacing: 0.4em;
-	text-align: center;
-	font-weight: bolder;
-	text-decoration: underline overline;
-	color: #000000;
-}
-.eventInfoBlock h4 {
-	text-transform: capitalize;
-	font-size: 14px;
-	text-align: center;
-	font-variant: small-caps;
-}
-.eventInfoBlock p {
-	font-size: 12.5px;
-	font-style: italic;
-	color: #0099FF;
-	text-align: right;
-	float: right;
-	padding-top: -5px;
-}
-#transportWindow {
-	height: 400px;
-	width: 90%;
-	margin-top: 20px;
-	border: 2px solid #CCCCCC;
-	clear: both;
-	text-align: center;
-	padding-left: 2%;
-}
-.transport {
-	width: 30%;
-	float: left;
-	margin-right: 2%;
-}
-#transportOne {
- background-image: "<?php echo $eventOne->stationPlotURL
-?>;
-"
-}
-#transportTwo {
- background-image: "<?php echo $eventTwo->stationPlotURL
-?>;
-"
-}
-#transportThree {
- background-image: "<?php echo $eventThree->stationPlotURL
-?>;
-"
-}
-#map-canvas {
-	width: 80%;
-}
-</style>
+<link href="seismokraft.css" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
@@ -232,7 +160,7 @@ function tuneSources(element){
 /***************************
 GOOGLE MAP IMPLEMENTATION
 */
-function initialize() {
+function initializeMap() {
   var mapOptions = {
     zoom: 0,
     mapTypeId: google.maps.MapTypeId.SATELLITE
@@ -270,7 +198,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initializeMap);
 
 
 
@@ -321,7 +249,7 @@ jQuery Objects
 </script>
   <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
-      <h1>1</h1>
+      <h1><a href="<?php echo $eventOne->stationAudioURL; ?>">1</a></h1>
       <h3>M<?php echo $eventOne->magnitude; ?></h3>
       <h4><?php echo $eventOne->locationDescription; ?></h4>
       <p>at
@@ -332,7 +260,7 @@ jQuery Objects
       </p>
     </div>
     <div class="eventInfoBlock" id="eventTwoSummary">
-      <h1>2</h1>
+      <h1><a href="<?php echo $eventTwo->stationAudioURL; ?>">2</a></h1>
       <h3>M<?php echo $eventTwo->magnitude; ?></h3>
       <h4><?php echo $eventTwo->locationDescription; ?></h4>
       <p>at
@@ -343,7 +271,7 @@ jQuery Objects
       </p>
     </div>
     <div class="eventInfoBlock" id="eventThreeSummary">
-      <h1>3</h1>
+      <h1><a href="<?php echo $eventThree->stationAudioURL; ?>">3</a></h1>
       <h3>M<?php echo $eventThree->magnitude; ?></h3>
       <h4><?php echo $eventThree->locationDescription; ?></h4>
       <p>at
@@ -354,7 +282,18 @@ jQuery Objects
       </p>
     </div>
   </div>
-  <div id="map-canvas"></div>
+  <br>
+  <div id="underConstruction">
+  <p>
+  Seismokraft is a web-based seismic sonification application currently under development.
+  </p>
+  <div id="gitHubButton">
+    <p>
+      <a href="https://github.com/felakuti4life/Seismokraft">track the progress of Seismokraft</a>
+    </p>
+  </div>
+  </div>
+  <!--<div id="map-canvas"></div>
   <div id="transportWindow">
     <div class="transport" id="transportOne">
       <div id="transportSliderOne"></div>
@@ -374,7 +313,7 @@ jQuery Objects
     <div class="parameters">Content for  class "parameters" Goes Here</div>
     <div id="fftAnalysis">Content for  id "fftAnalysis" Goes Here</div>
   </div>
-  <div id="mainVolume">Content for  id "mainVolume" Goes Here</div>
+  <div id="mainVolume">Content for  id "mainVolume" Goes Here</div>-->
 </div>
 </body>
 </html>

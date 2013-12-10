@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* CSS Document */
+.eventInfoBlock {
+	padding: 5px;
+	margin-right: 4%;
+	float: left;
+	width: 20%;
+	border: 2px solid #CCCCCC;
+	border-radius: 5px;
+	background-color: #FFE292;
+}
+.eventInfoBlock h1 {
+	padding: 1px;
+	text-align: center;
+	font-weight: bolder;
+	font-variant: small-caps;
+	color: #333333;
+	text-decoration: underline;
+}
+.eventInfoBlock h3 {
+	letter-spacing: 0.4em;
+	text-align: center;
+	font-weight: bolder;
+	text-decoration: underline overline;
+	color: #000000;
+}
+.eventInfoBlock h4 {
+	text-transform: capitalize;
+	font-size: 14px;
+	text-align: center;
+	font-variant: small-caps;
+}
+.eventInfoBlock p {
+	font-size: 12.5px;
+	font-style: italic;
+	text-align: right;
+	float: right;
+	padding-top: -5px;
+}
+#transportWindow {
+	height: 400px;
+	width: 90%;
+	margin-top: 20px;
+	border: 2px solid #CCCCCC;
+	clear: both;
+	text-align: center;
+	padding-left: 2%;
+}
+.transport {
+	width: 30%;
+	float: left;
+	margin-right: 2%;
+}
+#transportOne {
+ background-image: "<?php echo $eventOne->stationPlotURL ?> "
+}
+#transportTwo {
+ background-image: "<?php echo $eventTwo->stationPlotURL ?> "
+}
+#transportThree {
+ background-image: "<?php echo $eventThree->stationPlotURL ?> "
+}
+#map-canvas {
+	width: 80%;
+}
+#eventsInfo {
+	vertical-align: middle;
+}
+#underConstruction{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #59371A;
+	text-align: center;
+	clear:both;
+	width: 90%;
+}
+#underConstruction #gitHubButton a {
+	background-color: #FFCC66;
+	border: 2px solid #CC3333;
+	text-decoration:none;
+	clear:both;
+}

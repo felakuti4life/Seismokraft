@@ -87,11 +87,11 @@ class SeismicEvent {
 		
 		$this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
 		$this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
-		$i = 1;
-		while(trim($this->locationCode, " ") == '' && $i<12){
+		$limit = 1;
+		while(trim($this->locationCode, " ") == '' && $limit<5){
 			$this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
 			$this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
-			$i++;
+			$limit++;
 		}
 	}
 	
