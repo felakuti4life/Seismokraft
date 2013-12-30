@@ -3,14 +3,14 @@
 
 <head>
 <title>Seismokraft App</title>
-<link rel="stylesheet" type="text/css" href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
+<link rel="stylesheet" type="text/css" media="all" href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
 <link href="seismokraft.css" rel="stylesheet" type="text/css">
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
 <body>
 <div id="applicationWindow"> 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&sensor=false"
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&amp;sensor=false"
   type="text/javascript"></script> 
   <script type="text/javascript">
 /****************************
@@ -170,7 +170,7 @@ function initializeMap() {
   
   var eventOneCoordinates= new google.maps.LatLng(<?php echo $eventOne->location->lat.", ".$eventOne->location->lng; ?>);
   var eventTwoCoordinates= new google.maps.LatLng(<?php echo $eventTwo->location->lat.", ".$eventTwo->location->lng; ?>);
-  var eventThreeCoordinates= new google.maps.LatLng(<?php echo $eventThree->location->lat.", ".$eventThree->location->lng; ?>);
+  var eventThreeCoordinates= new google.maps.LatLng(<?php echo  $eventThree->location->lat.", ".$eventThree->location->lng; ?>);
   
   
   var markerOne = new google.maps.Marker({
@@ -210,21 +210,24 @@ jQuery Objects
 		playSound(EventOneBuffer, SourceOne, GainNodeOne);
 		playSound(EventTwoBuffer, SourceTwo, GainNodeTwo);
 		playSound(EventThreeBuffer, SourceThree, GainNodeThree);
-        $(function(){
+		});
+		
+	$(function(){
 		$("#channelFaderSlider").slider({
 			max:500,
 			animate: "slow"
 			});
-		});
 		
 	$("#channelFaderSlider").on("slidechange", 
-		fadeBetweenSources($("#channelFaderSlider").slider("option", "value"), $("#channelFaderSlider").slider("option", "max"));
+		fadeBetweenSources(
+			$("#channelFaderSlider").slider("option", "value"),
+			$("#channelFaderSlider").slider("option", "max")
+			));
 	
 	$(function(){
 		$("#transportSliderOne").slider({
 			max: sourceOne.buffer.duration,
-			
-			
+			//TODO: elaborate slider	
 		});
 	});
     });
@@ -283,17 +286,7 @@ jQuery Objects
     </div>
   </div>
   <br>
-  <div id="underConstruction">
-  <p>
-  Seismokraft is a web-based seismic sonification application currently under development.
-  </p>
-  <div id="gitHubButton">
-    <p>
-      <a href="https://github.com/felakuti4life/Seismokraft">track the progress of Seismokraft</a>
-    </p>
-  </div>
-  </div>
-  <!--<div id="map-canvas"></div>
+  <div id="map-canvas"></div>
   <div id="transportWindow">
     <div class="transport" id="transportOne">
       <div id="transportSliderOne"></div>
@@ -313,7 +306,7 @@ jQuery Objects
     <div class="parameters">Content for  class "parameters" Goes Here</div>
     <div id="fftAnalysis">Content for  id "fftAnalysis" Goes Here</div>
   </div>
-  <div id="mainVolume">Content for  id "mainVolume" Goes Here</div>-->
+  <div id="mainVolume">Content for  id "mainVolume" Goes Here</div>
 </div>
 </body>
 </html>

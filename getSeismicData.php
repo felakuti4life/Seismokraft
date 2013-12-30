@@ -93,6 +93,7 @@ class SeismicEvent {
 			$this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
 			$limit++;
 		}
+		if(trim($this->locationCode) == ''){$this->locationCode = "00";}
 	}
 	
 	public function setAudioAndPlotURL(){
