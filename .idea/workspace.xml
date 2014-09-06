@@ -1,13 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Current File" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="882fbbe8-cf33-4366-ae00-8a08a149e853" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/seismokraft.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/seismokraft.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AudioProcessing.php" afterPath="$PROJECT_DIR$/AudioProcessing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/bounce-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/bounce-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/explode-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/explode-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getSeismicData.php" afterPath="$PROJECT_DIR$/getSeismicData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.de-DE.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.de-DE.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.ja-JP.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.ja-JP.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/highlight-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/highlight-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/jQuery.widget.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/jQuery.widget.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery-ui.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery-ui.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery-ui.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery-ui.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery-ui.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery-ui.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jquery.mousewheel.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jquery.mousewheel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.accordion.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.accordion.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.accordion.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.accordion.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.accordion.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.accordion.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.accordion.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.accordion.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.autocomplete.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.autocomplete.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.autocomplete.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.autocomplete.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.autocomplete.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.autocomplete.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.autocomplete.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.autocomplete.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.base.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.base.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.button.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.button.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.button.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.button.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.button.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.button.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.button.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.button.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.core.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.core.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.core.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.core.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.core.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.core.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.datepicker.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.datepicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.datepicker.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.datepicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.datepicker.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.datepicker.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.datepicker.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.datepicker.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.dialog.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.dialog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.dialog.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.dialog.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.dialog.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.dialog.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.dialog.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.dialog.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.menu.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.menu.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.menu.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.menu.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.menu.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.menu.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.progressbar.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.progressbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.progressbar.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.progressbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.progressbar.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.progressbar.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.progressbar.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.progressbar.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.resizable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.resizable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.resizable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.resizable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.resizable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.resizable.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.resizable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.resizable.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.selectable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.selectable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.selectable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.selectable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.selectable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.selectable.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.selectable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.selectable.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.slider.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.slider.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.slider.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.slider.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.slider.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.slider.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.spinner.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.spinner.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.spinner.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.spinner.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.spinner.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.spinner.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.spinner.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.spinner.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tabs.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tabs.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tabs.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tabs.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tabs.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tabs.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tabs.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tabs.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.theme.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.theme.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.theme.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.theme.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.theme.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.theme.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tooltip.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tooltip.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tooltip.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tooltip.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tooltip.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tooltip.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tooltip.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tooltip.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jshint.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jshint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/pulsate-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/pulsate-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/scale-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/scale-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/shake-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/shake-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/slide-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/slide-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/transfer-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/transfer-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="seismokraft.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +117,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="seismokraft.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seismokraft.php">
+      <file leaf-file-name="getSeismicData.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/getSeismicData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="9" selection-start="9591" selection-end="9591" vertical-scroll-proportion="1.6984733" vertical-offset="2235" max-vertical-offset="3690">
+            <state vertical-scroll-proportion="-1.0850254" vertical-offset="1260" max-vertical-offset="2340">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AudioProcessing.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AudioProcessing.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="4890">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="480">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -54,6 +162,16 @@
       <MyDateState />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/AudioProcessing.php" />
+        <option value="$PROJECT_DIR$/getSeismicData.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.4" />
   <component name="ProjectFrameBounds">
     <option name="width" value="1440" />
     <option name="height" value="900" />
@@ -65,6 +183,8 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
@@ -72,7 +192,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -84,6 +204,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -99,69 +220,464 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="seismokraft" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="true" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="options.lastSelected" value="Configurable.PHP" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="/usr/bin" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="$PROJECT_DIR$/../../../Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="$PROJECT_DIR$/../../../Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="seismokraft" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="882fbbe8-cf33-4366-ae00-8a08a149e853" name="Default" comment="" />
       <created>1381607260807</created>
       <updated>1381607260807</updated>
+      <workItem from="1408983405642" duration="168000" />
+      <workItem from="1408983610264" duration="600000" />
+      <workItem from="1408984291085" duration="2842000" />
+      <workItem from="1409757994087" duration="879000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4489000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24305555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32880434" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945653" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -170,18 +686,173 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/seismokraft.php">
+    <entry file="file://$PROJECT_DIR$/getSeismicData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="9" selection-start="9591" selection-end="9591" vertical-scroll-proportion="1.6984733" vertical-offset="2235" max-vertical-offset="3690">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2700">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AudioProcessing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2392" max-vertical-offset="4890">
+          <caret line="172" column="20" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getSeismicData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="2520">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getSeismicData.php">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2520">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioProcessing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="4890">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getSeismicData.php">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0850254" vertical-offset="1260" max-vertical-offset="2340">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7.5 (/usr/bin/python) interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7.5 (/usr/bin/python)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>seismokraft</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 
