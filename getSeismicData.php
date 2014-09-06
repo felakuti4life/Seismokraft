@@ -21,7 +21,7 @@
 
  */
 
-//TODO: Modify data-getter to only pull waveforms from channels with code ?HZ
+
 
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
@@ -109,6 +109,7 @@ class SeismicEvent
 
     public function setChannelAndLocation()
     {
+        //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         $channelUrl = "http://service.iris.edu/fdsnws/station/1/query?net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode . "&starttime=2013-06-07T01:00:00&endtime=" . $this->impulseDate .
             "&level=channel&format=xml&nodata=404";
@@ -148,8 +149,6 @@ class SeismicEvent
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
     }
 }
-
-//TODO: move these to the __construct function
 
 
 $eventOne = new SeismicEvent($eventOneIndex);
