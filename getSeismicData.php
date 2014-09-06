@@ -21,6 +21,8 @@
 
  */
 
+//TODO: Modify data-getter to only pull waveforms from channels with code ?HZ
+
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
