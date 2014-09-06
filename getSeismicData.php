@@ -20,16 +20,18 @@
  * SUMMARY: This script handles all of the serverside queries to the IRIS server and pulls metadata about the recent seismic events, as well as time series data.
 
  */
-$DATE = date('Y-m-d');
-//pull event info for last three seismic events
-$url = "http://service.iris.edu/fdsnws/event/1/query?starttime=2010-02-27T06:30:00&endtime=" . $DATE . "&minmag=3.5&maxmag=5.0&includeallorigins=true&orderby=time&format=xml&limit=8&nodata=404";
-$xml = file_get_contents($url);
-$quake_table = new SimpleXMLElement($xml);
+
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
 $eventTwoIndex = 2;
 $eventThreeIndex = 3;
+
+$DATE = date('Y-m-d');
+//pull event info for last three seismic events
+$url = "http://service.iris.edu/fdsnws/event/1/query?starttime=2010-02-27T06:30:00&endtime=" . $DATE . "&minmag=3.5&maxmag=5.0&includeallorigins=true&orderby=time&format=xml&limit=8&nodata=404";
+$xml = file_get_contents($url);
+$quakeTable = new SimpleXMLElement($xml);
 
 //class definitions
 class Location
@@ -62,13 +64,14 @@ class SeismicEvent
 
     function __construct($eventIndex)
     {
+        global $quakeTable;
         $this->location = new Location();
-        $this->location->depth = floatval($quake_table->eventParameters->event[$eventIndex]->origin->depth->value);
-        $this->location->lng = floatval($quake_table->eventParameters->event[$eventIndex]->origin->longitude->value);
-        $this->location->lat = floatval($quake_table->eventParameters->event[$eventIndex]->origin->latitude->value);
-        $this->locationDescription = $quake_table->eventParameters->event[$eventIndex]->description->text;
-        $this->impulseDate = $quake_table->eventParameters->event[$eventIndex]->origin->time->value;
-        $this->magnitude = floatval($quake_table->eventParameters->event[$eventIndex]->magnitude->mag->value);
+        $this->location->depth = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->depth->value);
+        $this->location->lng = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->longitude->value);
+        $this->location->lat = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->latitude->value);
+        $this->locationDescription = $quakeTable->eventParameters->event[$eventIndex]->description->text;
+        $this->impulseDate = $quakeTable->eventParameters->event[$eventIndex]->origin->time->value;
+        $this->magnitude = floatval($quakeTable->eventParameters->event[$eventIndex]->magnitude->mag->value);
         $this->setNetworkAndStations();
         $this->setTimeSeriesStartDate();
         $this->setChannelAndLocation();
@@ -113,8 +116,8 @@ class SeismicEvent
         $this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
         $limit = 1;
         while (trim($this->locationCode, " ") == '' && $limit < 5) {
-            $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
-            $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
+            $this->channelCode = $channel_table->Network->Station->Channel[$limit]['code'];
+            $this->locationCode = $channel_table->Network->Station->Channel[$limit]['locationCode'];
             $limit++;
         }
         if (trim($this->locationCode) == '') {
@@ -142,7 +145,6 @@ class SeismicEvent
 }
 
 //TODO: move these to the __construct function
-
 
 
 $eventOne = new SeismicEvent($eventOneIndex);

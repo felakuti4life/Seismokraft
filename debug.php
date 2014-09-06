@@ -53,12 +53,12 @@ class SeismicEvent {
 	var $stationPlotURL;
 	
 	public function __construct($eventIndex=0){
-		global $quake_table;
-		$this->location->depth = floatval($quake_table->eventParameters->event[$eventIndex]->origin->depth->value);
-		$this->location->lng = floatval($quake_table->eventParameters->event[$eventIndex]->origin->longitude->value);
-		$this->location->lat = floatval($quake_table->eventParameters->event[$eventIndex]->origin->latitude->value);
-		$this->impulseDate = $quake_table->eventParameters->event[$eventIndex]->origin->time->value;
-		$this->magnitude = floatval($quake_table->eventParameters->event[$eventIndex]->magnitude->mag->value);
+		global $quakeTable;
+		$this->location->depth = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->depth->value);
+		$this->location->lng = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->longitude->value);
+		$this->location->lat = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->latitude->value);
+		$this->impulseDate = $quakeTable->eventParameters->event[$eventIndex]->origin->time->value;
+		$this->magnitude = floatval($quakeTable->eventParameters->event[$eventIndex]->magnitude->mag->value);
 		$this->setNetworkAndStations();
 		$this->setTimeSeriesStartDate();
 		$this->setChannelAndLocation();

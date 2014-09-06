@@ -6,94 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="882fbbe8-cf33-4366-ae00-8a08a149e853" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/seismokraft.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AudioProcessing.php" afterPath="$PROJECT_DIR$/AudioProcessing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/bounce-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/bounce-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/explode-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/explode-effect.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/debug.php" afterPath="$PROJECT_DIR$/debug.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getSeismicData.php" afterPath="$PROJECT_DIR$/getSeismicData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.de-DE.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.de-DE.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.ja-JP.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.culture.ja-JP.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/globalize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/highlight-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/highlight-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/jQuery.widget.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/jQuery.widget.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery-ui.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery-ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery-ui.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery-ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery-ui.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery-ui.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery-ui.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery-ui.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jquery.mousewheel.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jquery.mousewheel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.accordion.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.accordion.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.accordion.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.accordion.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.accordion.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.accordion.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.accordion.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.accordion.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.autocomplete.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.autocomplete.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.autocomplete.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.autocomplete.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.autocomplete.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.autocomplete.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.autocomplete.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.autocomplete.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.base.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.base.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.base.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.button.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.button.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.button.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.button.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.button.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.button.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.button.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.button.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.core.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.core.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.core.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.core.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.core.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.core.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.datepicker.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.datepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.datepicker.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.datepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.datepicker.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.datepicker.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.datepicker.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.datepicker.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.dialog.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.dialog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.dialog.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.dialog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.dialog.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.dialog.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.dialog.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.dialog.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.menu.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.menu.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.menu.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.menu.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.menu.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.menu.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.menu.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.menu.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.progressbar.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.progressbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.progressbar.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.progressbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.progressbar.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.progressbar.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.progressbar.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.progressbar.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.resizable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.resizable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.resizable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.resizable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.resizable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.resizable.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.resizable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.resizable.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.selectable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.selectable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.selectable.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.selectable.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.selectable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.selectable.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.selectable.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.selectable.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.slider.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.slider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.slider.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.slider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.slider.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.slider.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.slider.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.slider.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.spinner.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.spinner.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.spinner.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.spinner.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.spinner.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.spinner.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.spinner.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.spinner.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tabs.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tabs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tabs.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tabs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tabs.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tabs.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tabs.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tabs.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.theme.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.theme.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.theme.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.theme.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tooltip.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/jquery.ui.tooltip.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tooltip.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/jquery.ui.tooltip.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tooltip.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/Seismokraft/minified/jquery.ui.tooltip.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tooltip.min.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/themes/base/minified/jquery.ui.tooltip.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jshint.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/jshint.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/pulsate-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/pulsate-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.css" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.js" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/external/qunit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/scale-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/scale-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/shake-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/shake-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/slide-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/slide-effect.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/transfer-effect.html" afterPath="$PROJECT_DIR$/jqueryStyle/development-bundle/docs/transfer-effect.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="seismokraft.iws" />
@@ -120,9 +34,11 @@
       <file leaf-file-name="getSeismicData.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getSeismicData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0850254" vertical-offset="1260" max-vertical-offset="2340">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="1.389594" vertical-offset="690" max-vertical-offset="2370">
+              <caret line="119" column="82" selection-start-line="119" selection-start-column="82" selection-end-line="119" selection-end-column="82" />
+              <folding>
+                <element signature="e#6#1586#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,8 +46,28 @@
       <file leaf-file-name="AudioProcessing.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioProcessing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="4890">
+            <state vertical-scroll-proportion="135.0" vertical-offset="3540" max-vertical-offset="4890">
               <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="990">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="8.75" vertical-offset="510" max-vertical-offset="1605">
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -238,7 +174,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="true" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="options.lastSelected" value="Configurable.PHP" />
@@ -631,12 +567,17 @@
       <workItem from="1408983405642" duration="168000" />
       <workItem from="1408983610264" duration="600000" />
       <workItem from="1408984291085" duration="2842000" />
-      <workItem from="1409757994087" duration="879000" />
+      <workItem from="1409757994087" duration="3419000" />
     </task>
+    <task id="LOCAL-00001" summary="update constructors">
+      <created>1409971033936</created>
+      <updated>1409971033936</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4489000" />
+    <option name="totallyTimeSpent" value="7029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -655,6 +596,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282532" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="RESTClient" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -667,7 +609,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32880434" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39945653" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -683,10 +624,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="update constructors" />
+    <option name="LAST_COMMIT_MESSAGE" value="update constructors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -700,7 +644,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2700">
           <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#6#1586#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -724,7 +670,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="2520">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#6#1586#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -735,7 +683,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2520">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#6#1586#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -749,8 +699,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AudioProcessing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="4890">
+        <state vertical-scroll-proportion="135.0" vertical-offset="3540" max-vertical-offset="4890">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="8.75" vertical-offset="510" max-vertical-offset="1605">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -760,9 +726,11 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0850254" vertical-offset="1260" max-vertical-offset="2340">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="1.389594" vertical-offset="690" max-vertical-offset="2370">
+          <caret line="119" column="82" selection-start-line="119" selection-start-column="82" selection-end-line="119" selection-end-column="82" />
+          <folding>
+            <element signature="e#6#1586#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
