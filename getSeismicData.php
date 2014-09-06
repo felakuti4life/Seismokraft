@@ -40,9 +40,10 @@ class Location
     var $lng;
     var $lat;
 
-    public function __construct()
+    function __construct()
     {
     }
+
 }
 
 class SeismicEvent
@@ -66,12 +67,14 @@ class SeismicEvent
     {
         global $quakeTable;
         $this->location = new Location();
-        $this->location->depth = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->depth->value);
-        $this->location->lng = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->longitude->value);
-        $this->location->lat = floatval($quakeTable->eventParameters->event[$eventIndex]->origin->latitude->value);
-        $this->locationDescription = $quakeTable->eventParameters->event[$eventIndex]->description->text;
-        $this->impulseDate = $quakeTable->eventParameters->event[$eventIndex]->origin->time->value;
-        $this->magnitude = floatval($quakeTable->eventParameters->event[$eventIndex]->magnitude->mag->value);
+        $event = $quakeTable->eventParameters->event[$eventIndex];
+        $origin = $event->origin;
+        $this->location->depth = floatval($origin->depth->value);
+        $this->location->lng = floatval($origin->longitude->value);
+        $this->location->lat = floatval($origin->latitude->value);
+        $this->locationDescription = $event->description->text;
+        $this->impulseDate = $origin->time->value;
+        $this->magnitude = floatval($event->magnitude->mag->value);
         $this->setNetworkAndStations();
         $this->setTimeSeriesStartDate();
         $this->setChannelAndLocation();
