@@ -22,16 +22,39 @@
  */
 
 
-
-
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
 $eventTwoIndex = 2;
 $eventThreeIndex = 3;
 
+/** CONSTANTS */
+//current date:
 $DATE = date('Y-m-d');
-//pull event info for last three seismic events
-$url = "http://service.iris.edu/fdsnws/event/1/query?starttime=2010-02-27T06:30:00&endtime=" . $DATE . "&minmag=3.5&maxmag=5.0&includeallorigins=true&orderby=time&format=xml&limit=8&nodata=404";
+
+//Base url for FDSN webservice
+$FDSN_URL = "http://service.iris.edu/fdsnws/";
+
+//Start time for the time range for when we are getting quakes for. Always an arbitrarily early time, since we get the three most recent
+$START_TIME = "2010-02-27T06:30:00";
+
+//Minimum maginitude for the seismic event:
+$MIN_MAG = 4.5;
+
+//Maximum magnitude for the seismic event:
+$MAX_MAG = 8.0;
+
+$url = $FDSN_URL .
+    "event/1/query?" .
+    "starttime=" . $START_TIME .
+    "&endtime=" . $DATE .
+    "&minmag=" . strval($MIN_MAG) .
+    "&maxmag=" . strval($MAX_MAG) .
+    "&includeallorigins=" . "true" .
+    "&orderby=" . "time" .
+    "&format=" . "xml" .
+    "&limit=" . "8" .
+    "&nodata=" . "404";
+
 $xml = file_get_contents($url);
 $quakeTable = new SimpleXMLElement($xml);
 
@@ -94,10 +117,17 @@ class SeismicEvent
 
     public function setNetworkAndStations()
     {
-        $stationUrl = "http://service.iris.edu/fdsnws/station/1/query?starttime=2013-06-07T01:00:00&endtime=" . $this->impulseDate .
-            "&level=station&format=xml&lat=" . strval($this->location->lat) .
+        global $FDSN_URL;
+        $stationUrl = $FDSN_URL.
+            "station/1/query?".
+            "starttime="."2013-06-07T01:00:00".
+            "&endtime=" . $this->impulseDate .
+            "&level="."station".
+            "&format="."xml".
+            "&lat=" . strval($this->location->lat) .
             "&lon=" . strval($this->location->lng) .
-            "&maxradius=6.0&nodata=404";
+            "&maxradius="."6.0".
+            "&nodata="."404";
         $stationXml = file_get_contents($stationUrl);
         $station_table = new SimpleXMLElement($stationXml);
 
@@ -110,9 +140,16 @@ class SeismicEvent
     public function setChannelAndLocation()
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
-        $channelUrl = "http://service.iris.edu/fdsnws/station/1/query?net=" . $this->nearestNetworkCode .
-            "&sta=" . $this->nearestStationCode . "&starttime=2013-06-07T01:00:00&endtime=" . $this->impulseDate .
-            "&level=channel&format=xml&nodata=404";
+        global $FDSN_URL;
+        $channelUrl = $FDSN_URL.
+            "station/1/query?".
+            "net=" . $this->nearestNetworkCode .
+            "&sta=" . $this->nearestStationCode .
+            "&starttime="."2013-06-07T01:00:00".
+            "&endtime=" . $this->impulseDate .
+            "&level="."channel".
+            "&format="."xml".
+            "&nodata="."404";
         $channelXml = file_get_contents($channelUrl);
         $channel_table = new SimpleXMLElement($channelXml);
 
@@ -133,17 +170,31 @@ class SeismicEvent
 
     public function setAudioAndPlotURL()
     {
-        $this->stationAudioURL = "http://service.iris.edu/irisws/timeseries/1/query?net=" . $this->nearestNetworkCode .
+        $this->stationAudioURL = "http://service.iris.edu/irisws/".
+            "timeseries/1/query?".
+            "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
             "&cha=" . $this->channelCode .
-            "&start=" . $this->timeSeriesStartDate . "&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=3000&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
+            "&start=" . $this->timeSeriesStartDate . "&dur="."8000".
+            "&envelope="."true".
+            "&output="."audio".
+            "&audiocompress="."true".
+            "&audiosamplerate="."3000".
+            "&loc=" . $this->locationCode
+            /*."&taper=0.5,HAMMING"*/
         ;
 
-        $this->stationPlotURL = "http://service.iris.edu/irisws/timeseries/1/query?net=" . $this->nearestNetworkCode .
+        $this->stationPlotURL = "http://service.iris.edu/irisws/".
+            "timeseries/1/query?".
+            "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
             "&cha=" . $this->channelCode .
             "&start=" . $this->timeSeriesStartDate .
-            "&dur=8000&envelope=true&output=plot&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
+            "&dur="."8000".
+            "&envelope="."true".
+            "&output="."plot".
+            "&loc=" . $this->locationCode
+            /*."&taper=0.5,HAMMING"*/
         ;
 
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
