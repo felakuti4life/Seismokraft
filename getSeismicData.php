@@ -170,7 +170,9 @@ class SeismicEvent
 
     public function setAudioAndPlotURL()
     {
-        $this->stationAudioURL = "http://service.iris.edu/irisws/".
+        $IRIS_URL = "http://service.iris.edu/irisws/";
+
+        $this->stationAudioURL = $IRIS_URL .
             "timeseries/1/query?".
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
@@ -184,7 +186,7 @@ class SeismicEvent
             /*."&taper=0.5,HAMMING"*/
         ;
 
-        $this->stationPlotURL = "http://service.iris.edu/irisws/".
+        $this->stationPlotURL = $IRIS_URL .
             "timeseries/1/query?".
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
