@@ -118,16 +118,16 @@ class SeismicEvent
     public function setNetworkAndStations()
     {
         global $FDSN_URL;
-        $stationUrl = $FDSN_URL.
-            "station/1/query?".
-            "starttime="."2013-06-07T01:00:00".
+        $stationUrl = $FDSN_URL .
+            "station/1/query?" .
+            "starttime=" . "2013-06-07T01:00:00" .
             "&endtime=" . $this->impulseDate .
-            "&level="."station".
-            "&format="."xml".
+            "&level=" . "station" .
+            "&format=" . "xml" .
             "&lat=" . strval($this->location->lat) .
             "&lon=" . strval($this->location->lng) .
-            "&maxradius="."6.0".
-            "&nodata="."404";
+            "&maxradius=" . "6.0" .
+            "&nodata=" . "404";
         $stationXml = file_get_contents($stationUrl);
         $station_table = new SimpleXMLElement($stationXml);
 
@@ -141,15 +141,15 @@ class SeismicEvent
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         global $FDSN_URL;
-        $channelUrl = $FDSN_URL.
-            "station/1/query?".
+        $channelUrl = $FDSN_URL .
+            "station/1/query?" .
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
-            "&starttime="."2013-06-07T01:00:00".
+            "&starttime=" . "2013-06-07T01:00:00" .
             "&endtime=" . $this->impulseDate .
-            "&level="."channel".
-            "&format="."xml".
-            "&nodata="."404";
+            "&level=" . "channel" .
+            "&format=" . "xml" .
+            "&nodata=" . "404";
         $channelXml = file_get_contents($channelUrl);
         $channel_table = new SimpleXMLElement($channelXml);
 
@@ -173,30 +173,28 @@ class SeismicEvent
         $IRIS_URL = "http://service.iris.edu/irisws/";
 
         $this->stationAudioURL = $IRIS_URL .
-            "timeseries/1/query?".
+            "timeseries/1/query?" .
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
             "&cha=" . $this->channelCode .
-            "&start=" . $this->timeSeriesStartDate . "&dur="."8000".
-            "&envelope="."true".
-            "&output="."audio".
-            "&audiocompress="."true".
-            "&audiosamplerate="."3000".
-            "&loc=" . $this->locationCode
-            /*."&taper=0.5,HAMMING"*/
+            "&start=" . $this->timeSeriesStartDate . "&dur=" . "8000" .
+            "&envelope=" . "true" .
+            "&output=" . "audio" .
+            "&audiocompress=" . "true" .
+            "&audiosamplerate=" . "3000" .
+            "&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
         ;
 
         $this->stationPlotURL = $IRIS_URL .
-            "timeseries/1/query?".
+            "timeseries/1/query?" .
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
             "&cha=" . $this->channelCode .
             "&start=" . $this->timeSeriesStartDate .
-            "&dur="."8000".
-            "&envelope="."true".
-            "&output="."plot".
-            "&loc=" . $this->locationCode
-            /*."&taper=0.5,HAMMING"*/
+            "&dur=" . "8000" .
+            "&envelope=" . "true" .
+            "&output=" . "plot" .
+            "&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
         ;
 
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
