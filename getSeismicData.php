@@ -43,6 +43,9 @@ $MIN_MAG = 4.5;
 //Maximum magnitude for the seismic event:
 $MAX_MAG = 8.0;
 
+//Our result code if our query fails:
+$NODATA = "404";
+
 $url = $FDSN_URL .
     "event/1/query?" .
     "starttime=" . $START_TIME .
@@ -53,7 +56,7 @@ $url = $FDSN_URL .
     "&orderby=" . "time" .
     "&format=" . "xml" .
     "&limit=" . "8" .
-    "&nodata=" . "404";
+    "&nodata=" . $NODATA;
 
 $xml = file_get_contents($url);
 $quakeTable = new SimpleXMLElement($xml);
@@ -90,6 +93,7 @@ class SeismicEvent
 
     function __construct($eventIndex)
     {
+        //set variables based on the quakeTable
         global $quakeTable;
         $this->location = new Location();
         $event = $quakeTable->eventParameters->event[$eventIndex];
@@ -110,14 +114,14 @@ class SeismicEvent
     public function setTimeSeriesStartDate()
     {
         $parsedDate = new DateTime('2013-10-06T14:00:40.1000');
-        $parsedDate->modify('-8 hours');
+        $parsedDate->modify('-24 hours');
         $dateString = $parsedDate->format('c');
         $this->timeSeriesStartDate = substr_replace($dateString, ".0000", 19);
     }
 
     public function setNetworkAndStations()
     {
-        global $FDSN_URL;
+        global $FDSN_URL, $NODATA;
         $stationUrl = $FDSN_URL .
             "station/1/query?" .
             "starttime=" . "2013-06-07T01:00:00" .
@@ -127,7 +131,7 @@ class SeismicEvent
             "&lat=" . strval($this->location->lat) .
             "&lon=" . strval($this->location->lng) .
             "&maxradius=" . "6.0" .
-            "&nodata=" . "404";
+            "&nodata=" . $NODATA;
         $stationXml = file_get_contents($stationUrl);
         $station_table = new SimpleXMLElement($stationXml);
 
@@ -140,7 +144,7 @@ class SeismicEvent
     public function setChannelAndLocation()
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
-        global $FDSN_URL;
+        global $FDSN_URL, $NODATA;
         $channelUrl = $FDSN_URL .
             "station/1/query?" .
             "net=" . $this->nearestNetworkCode .
@@ -149,7 +153,7 @@ class SeismicEvent
             "&endtime=" . $this->impulseDate .
             "&level=" . "channel" .
             "&format=" . "xml" .
-            "&nodata=" . "404";
+            "&nodata=" . $NODATA;
         $channelXml = file_get_contents($channelUrl);
         $channel_table = new SimpleXMLElement($channelXml);
 
