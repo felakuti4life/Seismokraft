@@ -21,11 +21,14 @@
 
  */
 
-
+/** PARAMETERS */
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
-$eventTwoIndex = 2;
-$eventThreeIndex = 3;
+$eventTwoIndex = 5;
+$eventThreeIndex = 7;
+
+//Whether we are printing debug statements
+$DEBUG = true;
 
 /** CONSTANTS */
 //current date:
@@ -150,7 +153,7 @@ class SeismicEvent
         global $FDSN_URL, $NODATA;
 
         //How many channel attempts will occur before we give up
-        $MAX_CHANNEL_ATTEMPTS = 5;
+        $MAX_CHANNEL_ATTEMPTS = 20;
 
         $channelUrl = $FDSN_URL .
             "station/1/query?" .
@@ -217,13 +220,18 @@ $eventOne = new SeismicEvent($eventOneIndex);
 $eventTwo = new SeismicEvent($eventTwoIndex);
 $eventThree = new SeismicEvent($eventThreeIndex);
 
-/* UNIT TESTS */
-/**
- * @param $event
- */
+/** UNIT TESTS */
+function echo_endpoints($event)
+{
+    global $url;
+    echo "<h3> quaketable url:".$url."</h3>";
+    echo "<h5> channel and location query: ". $event->channelUrlTest."</h5>";
+    echo "<h5> audio query: ". $event->stationAudioURL. "</h5>";
+}
+
 function echo_event($event)
 {
-    echo "<p> Event: </p>" .
+    echo "<p> Event in " . $event->locationDescription. "</p>".
         "<p> Magnitude: " . $event->magnitude .
         "</p> <p>Longitude: " . $event->location->lng .
         "</p> <p>Latitude: " . $event->location->lat .
@@ -235,8 +243,12 @@ function echo_event($event)
         "</p>";
 }
 
-echo_event($eventOne);
-echo_event($eventTwo);
-echo_event($eventThree);
-
+if($DEBUG==1) {
+    echo_endpoints($eventOne);
+    echo_event($eventOne);
+    echo_endpoints($eventTwo);
+    echo_event($eventTwo);
+    echo_endpoints($eventThree);
+    echo_event($eventThree);
+}
 ?>
