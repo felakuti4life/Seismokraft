@@ -38,10 +38,10 @@ $FDSN_URL = "http://service.iris.edu/fdsnws/";
 $START_TIME = "2010-02-27T06:30:00";
 
 //Minimum maginitude for the seismic event:
-$MIN_MAG = 4.5;
+$MIN_MAG = 5.5;
 
 //Maximum magnitude for the seismic event:
-$MAX_MAG = 8.0;
+$MAX_MAG = 9.0;
 
 //Our result code if our query fails:
 $NODATA = "404";
@@ -70,6 +70,9 @@ class Location
 
     function __construct()
     {
+        $this->depth = 0.0;
+        $this->lng = 0.0;
+        $this->lat = 0.0;
     }
 
 }
@@ -145,6 +148,10 @@ class SeismicEvent
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         global $FDSN_URL, $NODATA;
+
+        //How many channel attempts will occur before we give up
+        $MAX_CHANNEL_ATTEMPTS = 5;
+
         $channelUrl = $FDSN_URL .
             "station/1/query?" .
             "net=" . $this->nearestNetworkCode .
@@ -161,11 +168,11 @@ class SeismicEvent
 
         $this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
         $this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
-        $limit = 1;
-        while (trim($this->locationCode, " ") == '' && $limit < 5) {
-            $this->channelCode = $channel_table->Network->Station->Channel[$limit]['code'];
-            $this->locationCode = $channel_table->Network->Station->Channel[$limit]['locationCode'];
-            $limit++;
+        $i = 1;
+        while (trim($this->locationCode, " ") == '' && $i < $MAX_CHANNEL_ATTEMPTS) {
+            $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
+            $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
+            $i++;
         }
         if (trim($this->locationCode) == '') {
             $this->locationCode = "00";
@@ -209,4 +216,27 @@ class SeismicEvent
 $eventOne = new SeismicEvent($eventOneIndex);
 $eventTwo = new SeismicEvent($eventTwoIndex);
 $eventThree = new SeismicEvent($eventThreeIndex);
+
+/* UNIT TESTS */
+/**
+ * @param $event
+ */
+function echo_event($event)
+{
+    echo "<p> Event: </p>" .
+        "<p> Magnitude: " . $event->magnitude .
+        "</p> <p>Longitude: " . $event->location->lng .
+        "</p> <p>Latitude: " . $event->location->lat .
+        "</p> <p>Depth: " . $event->location->depth .
+        "</p> <p>Network: " . $event->nearestNetworkCode .
+        "</p> <p>Station: " . $event->nearestStationCode .
+        "</p> <p>Channel: " . $event->channelCode .
+        "</p> <p>Location: " . $event->locationCode .
+        "</p>";
+}
+
+echo_event($eventOne);
+echo_event($eventTwo);
+echo_event($eventThree);
+
 ?>
