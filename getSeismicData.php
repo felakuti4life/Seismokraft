@@ -224,7 +224,7 @@ $eventThree = new SeismicEvent($eventThreeIndex);
 function echo_endpoints($event)
 {
     global $url;
-    echo "<h3> quaketable url:".$url."</h3>";
+    echo "<h5> quaketable url:".$url."</h5>";
     echo "<h5> channel and location query: ". $event->channelUrlTest."</h5>";
     echo "<h5> audio query: ". $event->stationAudioURL. "</h5>";
 }
