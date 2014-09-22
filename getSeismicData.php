@@ -30,6 +30,9 @@ $eventThreeIndex = 7;
 //Whether we are printing debug statements
 $DEBUG = true;
 
+//whether we check for further location codes
+$CHECK_MORE_LOCATION_CODES = false;
+
 /** CONSTANTS */
 //current date:
 $DATE = date('Y-m-d');
@@ -150,7 +153,7 @@ class SeismicEvent
     public function setChannelAndLocation()
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
-        global $FDSN_URL, $NODATA;
+        global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES;
 
         //How many channel attempts will occur before we give up
         $MAX_CHANNEL_ATTEMPTS = 20;
@@ -171,15 +174,7 @@ class SeismicEvent
 
         $this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
         $this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
-        $i = 1;
-        while (trim($this->locationCode, " ") == '' && $i < $MAX_CHANNEL_ATTEMPTS) {
-            $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
-            $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
-            $i++;
-        }
-        if (trim($this->locationCode) == '') {
-            $this->locationCode = "00";
-        }
+        if($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
     }
 
     public function setAudioAndPlotURL()
@@ -195,8 +190,7 @@ class SeismicEvent
             "&envelope=" . "true" .
             "&output=" . "audio" .
             "&audiocompress=" . "true" .
-            "&audiosamplerate=" . "3000" .
-            "&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
+            "&audiosamplerate=" . "3000"
         ;
 
         $this->stationPlotURL = $IRIS_URL .
@@ -207,11 +201,30 @@ class SeismicEvent
             "&start=" . $this->timeSeriesStartDate .
             "&dur=" . "8000" .
             "&envelope=" . "true" .
-            "&output=" . "plot" .
-            "&loc=" . $this->locationCode/*."&taper=0.5,HAMMING"*/
-        ;
+            "&output=" . "plot";
+        if(trim($this->locationCode, ' ') == '') {
+            $this->stationAudioURL = $this->stationAudioURL."&loc=" . $this->locationCode;
+            $this->stationPlotURL = $this->stationPlotURL."&loc=" . $this->locationCode;
+        }
 
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
+    }
+
+    /** Check down channel list for other location codes
+     * @param $MAX_CHANNEL_ATTEMPTS
+     * @param $channel_table
+     */
+    public function check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table)
+    {
+        $i = 1;
+        while (trim($this->locationCode, " ") == '' && $i < $MAX_CHANNEL_ATTEMPTS) {
+            $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
+            $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
+            $i++;
+        }
+        if (trim($this->locationCode) == '') {
+            $this->locationCode = "00";
+        }
     }
 }
 
