@@ -175,6 +175,8 @@ class SeismicEvent
         $this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
         $this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
         if($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
+        //use -- for empty location codes
+        if($this->location_code_is_empty())$this->locationCode = '--';
     }
 
     public function setAudioAndPlotURL()
@@ -190,7 +192,8 @@ class SeismicEvent
             "&envelope=" . "true" .
             "&output=" . "audio" .
             "&audiocompress=" . "true" .
-            "&audiosamplerate=" . "3000"
+            "&audiosamplerate=" . "3000".
+            "&loc=" . $this->locationCode
         ;
 
         $this->stationPlotURL = $IRIS_URL .
@@ -201,30 +204,30 @@ class SeismicEvent
             "&start=" . $this->timeSeriesStartDate .
             "&dur=" . "8000" .
             "&envelope=" . "true" .
-            "&output=" . "plot";
-        if(trim($this->locationCode, ' ') == '') {
-            $this->stationAudioURL = $this->stationAudioURL."&loc=" . $this->locationCode;
-            $this->stationPlotURL = $this->stationPlotURL."&loc=" . $this->locationCode;
-        }
+            "&output=" . "plot" .
+            "&loc=" . $this->locationCode
+        ;
 
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
     }
 
-    /** Check down channel list for other location codes
-     * @param $MAX_CHANNEL_ATTEMPTS
-     * @param $channel_table
-     */
+    /** Check down channel list for other location codes */
     public function check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table)
     {
         $i = 1;
-        while (trim($this->locationCode, " ") == '' && $i < $MAX_CHANNEL_ATTEMPTS) {
+        while ($this->location_code_is_empty() && $i < $MAX_CHANNEL_ATTEMPTS) {
             $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
             $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
             $i++;
         }
-        if (trim($this->locationCode) == '') {
-            $this->locationCode = "00";
-        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function location_code_is_empty()
+    {
+        return trim($this->locationCode, ' ') == '';
     }
 }
 
