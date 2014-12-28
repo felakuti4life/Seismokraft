@@ -114,9 +114,7 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
         <div id="transportSliderThree"></div>
     </div>
 </div>
-<div id="channelFader">
-    <div id="channelFaderSlider"></div>
-</div>
+
 <div id="tunerSlider">Content for id "tunerSlider" Goes Here</div>
 <div id="filterWindow">
     <div class="parameters">Content for class "parameters" Goes Here</div>
@@ -125,8 +123,16 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
 <div id="mainVolume">Content for id "mainVolume" Goes Here</div>
     <p>
     <p><button style="display: block">Play/pause</button>
-        <p>1<input type="range" min="0" max="100" value="100" onchange="sample.crossfade(this);">3</p>
-        <canvas></canvas></p>
+    <h2>CROSSFADE</h2>
+        <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);">3</p>
+    <h2>FILTER</h2>
+    <p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
+        <label for="c1"><span></span>enable</label></p>
+    <h4>Frequency</h4>
+    <p>10 Hz<input type="range" min="0" step="0.01" max="100" value="1" onchange="sample.changeFreq(this);">22.5 kHz</p>
+    <h4>Q</h4>
+    <p>narrow<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.changeQ(this);">wide</p>
+        <canvas></canvas>
     <script src="AudioLoader.js"></script>
     <script src="AudioChain.js"></script>
     <script>

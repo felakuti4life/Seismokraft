@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-
 var w = 640;
 var h = 360;
 
-var SMOOTHING = 0.8;
-var FFT_SIZE = 2048;
+var smooth_factor = 0.8;
+var fft_buf_size = 2048;
+
+//Q fudge factor
+var QUAL_MUL = 30;
 
 function AudioChain(url1, url2, url3) {
     this.fft = context.createAnalyser();
@@ -55,6 +57,12 @@ AudioChain.prototype.togglePlayback = function() {
         console.log('paused at', this.startOffset);
         // Save the position of the play head.
     } else {
+        /* FILTER STUFF */
+        var filter = context.createBiquadFilter();
+        filter.type = filter.LOWPASS;
+        filter.frequency.value = 5000;
+        filter.connect(this.fft);
+
         /* VISUALIZER STUFF */
 
         this.startTime = context.currentTime;
@@ -66,12 +74,12 @@ AudioChain.prototype.togglePlayback = function() {
 
         /*CROSSFADE STUFF */
         // Create two sources.
-        this.ctl1 = createSource(this, this.event1);
-        this.ctl2 = createSource(this, this.event2);
-        this.ctl3 = createSource(this, this.event3);
-        // Mute the second source.
+        this.ctl1 = createSource(this.event1);
+        this.ctl2 = createSource(this.event2);
+        this.ctl3 = createSource(this.event3);
+
         this.ctl1.gainNode.gain.value = 0;
-        // Start playback in a loop
+
         var onName = this.ctl1.source.start ? 'start' : 'noteOn';
         this.ctl1.source[onName](0);
         this.ctl2.source[onName](0);
@@ -79,16 +87,13 @@ AudioChain.prototype.togglePlayback = function() {
         // Set the initial crossfade to be just source 1.
         this.crossfade(0);
 
-        function createSource(self, buffer) {
+        function createSource(buffer) {
             var source = context.createBufferSource();
             var gainNode = context.createGain();
             source.buffer = buffer;
-            // Turn on looping
             source.loop = true;
-            // Connect source to gain.
             source.connect(gainNode);
-            // Connect gain to destination.
-            gainNode.connect(self.fft);
+            gainNode.connect(filter);
 
             return {
                 source: source,
@@ -96,22 +101,19 @@ AudioChain.prototype.togglePlayback = function() {
             };
         }
 
-
+    this.filter = filter;
     }
     this.isPlaying = !this.isPlaying;
 }
 
 
 AudioChain.prototype.draw = function() {
-    this.fft.smoothingTimeConstant = SMOOTHING;
-    this.fft.fftSize = FFT_SIZE;
-
-    // Get the frequency data from the currently playing music
+    this.fft.smoothingTimeConstant = smooth_factor;
+    this.fft.fftSize = fft_buf_size;
     this.fft.getByteFrequencyData(this.freqs);
     this.fft.getByteTimeDomainData(this.times);
 
     var width = Math.floor(1/this.freqs.length, 10);
-
     var canvas = document.querySelector('canvas');
     var drawContext = canvas.getContext('2d');
     canvas.width = w;
@@ -128,7 +130,7 @@ AudioChain.prototype.draw = function() {
         drawContext.fillRect(i * barWidth, offset, barWidth, height);
     }
 
-    // time domain
+    //Time domain
     for (var i = 0; i < this.fft.frequencyBinCount; i++) {
         var value = this.times[i];
         var percent = value / 256;
@@ -151,7 +153,6 @@ AudioChain.prototype.getFrequencyValue = function(freq) {
 }
 
 /* CROSSFADING */
-// Fades between 0 (all source 1) and 1 (all source 2)
 AudioChain.prototype.crossfade = function(element) {
     var x = parseInt(element.value) / parseInt(element.max);
     //TODO: make this a three way thing
@@ -168,3 +169,36 @@ AudioChain.prototype.crossfade = function(element) {
     console.log("Crossfade at " + x + ": gain 1 " + gain1 + " gain 2 " + gain2 + " gain 3 " + gain3);
 };
 
+/* FILTERING */
+AudioChain.prototype.changeFreq = function(element) {
+    var minValue = 40;
+    var maxValue = context.sampleRate / 2;
+    var numberOfOctaves = Math.log(maxValue / minValue) / Math.LN2;
+    var multiplier = Math.pow(2, numberOfOctaves * (element.value - 1.0));
+
+    this.filter.frequency.value = maxValue * multiplier;
+};
+
+AudioChain.prototype.changeQ = function(element) {
+    this.filter.Q.value = element.value * QUAL_MUL;
+};
+
+AudioChain.prototype.toggleFilter = function(element) {
+    this.ctl1.gainNode.disconnect(0);
+    this.ctl2.gainNode.disconnect(0);
+    this.ctl3.gainNode.disconnect(0);
+    this.filter.disconnect(0);
+
+    if (element.checked) {
+        // Connect through the filter.
+        this.ctl1.gainNode.connect(this.filter);
+        this.ctl2.gainNode.connect(this.filter);
+        this.ctl3.gainNode.connect(this.filter);
+        this.filter.connect(this.fft);
+    } else {
+        // Otherwise, connect directly.
+        this.ctl1.gainNode.connect(this.fft);
+        this.ctl2.gainNode.connect(this.fft);
+        this.ctl3.gainNode.connect(this.fft);
+    }
+};
