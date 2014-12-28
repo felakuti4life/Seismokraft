@@ -1,3 +1,4 @@
+<html>
 <?php require_once('getSeismicData.php'); ?>
 <!DOCTYPE html>
 
@@ -115,24 +116,41 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
     </div>
 </div>
 
-<div id="tunerSlider">Content for id "tunerSlider" Goes Here</div>
-<div id="filterWindow">
-    <div class="parameters">Content for class "parameters" Goes Here</div>
-    <div id="fftAnalysis">Content for id "fftAnalysis" Goes Here</div>
-</div>
 <div id="mainVolume">Content for id "mainVolume" Goes Here</div>
     <p>
     <p><button style="display: block">Play/pause</button>
     <h2>CROSSFADE</h2>
-        <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);">3</p>
+    <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);">3</p>
+
+    <h2>TUNE</h2>
+    <p>slow<input type="range" min="0" step="0.01" max = "100" value="3" onchange="sample.setPlaybackRate(this)"></p>
+
     <h2>FILTER</h2>
     <p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
         <label for="c1"><span></span>enable</label></p>
+    <h4>Type</h4>
+    <p><input type="radio" name="filtertype" value="0" class="audioFx" checked
+              onclick="sample.changeFilterType(0)"> low pass</p>
+    <p><input type="radio" name="filtertype" value="1" class="audioFx" checked
+              onclick="sample.changeFilterType(1)"> hi pass</p>
+    <p><input type="radio" name="filtertype" value="2" class="audioFx" checked
+              onclick="sample.changeFilterType(2)"> band pass</p>
+    <p><input type="radio" name="filtertype" value="3" class="audioFx" checked
+              onclick="sample.changeFilterType(3)"> low shelf</p>
+    <p><input type="radio" name="filtertype" value="4" class="audioFx" checked
+              onclick="sample.changeFilterType(4)"> hi shelf</p>
+    <p><input type="radio" name="filtertype" value="5" class="audioFx" checked
+              onclick="sample.changeFilterType(5)"> peaking</p>
+    <p><input type="radio" name="filtertype" value="6" class="audioFx" checked
+              onclick="sample.changeFilterType(6)"> notch</p>
+    <p><input type="radio" name="filtertype" value="7" class="audioFx" checked
+              onclick="sample.changeFilterType(7)"> all pass</p>
     <h4>Frequency</h4>
-    <p>10 Hz<input type="range" min="0" step="0.01" max="100" value="1" onchange="sample.changeFreq(this);">22.5 kHz</p>
+    <p>10 Hz<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);">22.5 kHz</p>
     <h4>Q</h4>
-    <p>narrow<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.changeQ(this);">wide</p>
-        <canvas></canvas>
+    <p>narrow<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);">wide</p>
+
+    <canvas></canvas>
     <script src="AudioLoader.js"></script>
     <script src="AudioChain.js"></script>
     <script>

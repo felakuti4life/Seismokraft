@@ -146,6 +146,17 @@ AudioChain.prototype.draw = function() {
     }
 }
 
+/* PLAYBACK RATE CHANGE */
+AudioChain.prototype.setPlaybackRate = function(element) {
+    var x = parseInt(element.value) / parseInt(element.max);
+    minPlaybackRate = 0.1;
+    maxPlaybackRate = 4.0;
+    rate = (x*(maxPlaybackRate-minPlaybackRate) + minPlaybackRate);
+    this.ctl1.source.playbackRate.value = rate;
+    this.ctl2.source.playbackRate.value = rate;
+    this.ctl3.source.playbackRate.value = rate;
+};
+
 AudioChain.prototype.getFrequencyValue = function(freq) {
     var nyquist = context.sampleRate/2;
     var index = Math.round(freq/nyquist * this.freqs.length);
@@ -200,5 +211,34 @@ AudioChain.prototype.toggleFilter = function(element) {
         this.ctl1.gainNode.connect(this.fft);
         this.ctl2.gainNode.connect(this.fft);
         this.ctl3.gainNode.connect(this.fft);
+    }
+};
+
+AudioChain.prototype.changeFilterType = function(num) {
+    switch(num) {
+        case 0:
+            this.filter.type = "lowpass";
+            break;
+        case 1:
+            this.filter.type = "highpass";
+            break;
+        case 2:
+            this.filter.type = "bandpass";
+            break;
+        case 3:
+            this.filter.type = "lowshelf";
+            break;
+        case 4:
+            this.filter.type = "highshelf";
+            break;
+        case 5:
+            this.filter.type = "peaking";
+            break;
+        case 6:
+            this.filter.type = "notch";
+            break;
+        case 7:
+            this.filter.type = "allpass";
+            break;
     }
 };
