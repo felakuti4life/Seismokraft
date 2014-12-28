@@ -17,14 +17,13 @@
  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * SUMMARY: This script handles all of the serverside queries to the IRIS server and pulls metadata about the recent seismic events, as well as time series data.
-
+ * SUMMARY: This script handles all of the server side queries to the IRIS server and pulls metadata about the recent seismic events, as well as time series data.
  */
 
 /** PARAMETERS */
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
-$eventTwoIndex = 5;
+$eventTwoIndex = 4;
 $eventThreeIndex = 7;
 
 //Whether we are printing debug statements
@@ -115,14 +114,14 @@ class SeismicEvent
         $this->magnitude = floatval($event->magnitude->mag->value);
         $this->setNetworkAndStations();
         $this->setTimeSeriesStartDate();
-        $this->setChannelAndLocation();
+        $this->setChannelAndLocation(0);
         $this->setAudioAndPlotURL();
     }
 
 
     public function setTimeSeriesStartDate()
     {
-        $parsedDate = new DateTime('2013-10-06T14:00:40.1000');
+        $parsedDate = new DateTime('2014-09-21T14:00:40.1000');
         $parsedDate->modify('-24 hours');
         $dateString = $parsedDate->format('c');
         $this->timeSeriesStartDate = substr_replace($dateString, ".0000", 19);
@@ -150,7 +149,7 @@ class SeismicEvent
         $this->nearestStationCode = $station_table->Network[0]->Station[0]['code'];
     }
 
-    public function setChannelAndLocation()
+    public function setChannelAndLocation($i)
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES;
@@ -172,11 +171,12 @@ class SeismicEvent
 
         $this->channelUrlTest = $channelUrl;
 
-        $this->channelCode = $channel_table->Network->Station->Channel[0]['code'];
-        $this->locationCode = $channel_table->Network->Station->Channel[0]['locationCode'];
-        if($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
+        $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
+        $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
+        if ($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
         //use -- for empty location codes
-        if($this->location_code_is_empty())$this->locationCode = '--';
+        if ($this->location_code_is_empty()) $this->locationCode = '--';
+        if ($this->channelCode != 'BHZ') $this->setChannelAndLocation($i + 1);
     }
 
     public function setAudioAndPlotURL()
@@ -188,13 +188,13 @@ class SeismicEvent
             "net=" . $this->nearestNetworkCode .
             "&sta=" . $this->nearestStationCode .
             "&cha=" . $this->channelCode .
-            "&start=" . $this->timeSeriesStartDate . "&dur=" . "8000" .
+            "&start=" . $this->timeSeriesStartDate .
+            "&dur=" . "8000" .
             "&envelope=" . "true" .
             "&output=" . "audio" .
             "&audiocompress=" . "true" .
-            "&audiosamplerate=" . "3000".
-            "&loc=" . $this->locationCode
-        ;
+            "&audiosamplerate=" . "44100" .
+            "&loc=" . $this->locationCode;
 
         $this->stationPlotURL = $IRIS_URL .
             "timeseries/1/query?" .
@@ -205,8 +205,7 @@ class SeismicEvent
             "&dur=" . "8000" .
             "&envelope=" . "true" .
             "&output=" . "plot" .
-            "&loc=" . $this->locationCode
-        ;
+            "&loc=" . $this->locationCode;
 
         $this->audioBuffer = file_get_contents($this->stationAudioURL);
     }
@@ -240,14 +239,14 @@ $eventThree = new SeismicEvent($eventThreeIndex);
 function echo_endpoints($event)
 {
     global $url;
-    echo "<h5> quaketable url:".$url."</h5>";
-    echo "<h5> channel and location query: ". $event->channelUrlTest."</h5>";
-    echo "<h5> audio query: ". $event->stationAudioURL. "</h5>";
+    echo "<h5> quaketable url:" . $url . "</h5>";
+    echo "<h5> channel and location query: " . $event->channelUrlTest . "</h5>";
+    echo "<h5> audio query: <a href=\"" . $event->stationAudioURL . "\"> here </a></h5>";
 }
 
 function echo_event($event)
 {
-    echo "<p> Event in " . $event->locationDescription. "</p>".
+    echo "<p> Event in " . $event->locationDescription . "</p>" .
         "<p> Magnitude: " . $event->magnitude .
         "</p> <p>Longitude: " . $event->location->lng .
         "</p> <p>Latitude: " . $event->location->lat .
@@ -256,10 +255,11 @@ function echo_event($event)
         "</p> <p>Station: " . $event->nearestStationCode .
         "</p> <p>Channel: " . $event->channelCode .
         "</p> <p>Location: " . $event->locationCode .
+        "</p> <p>Date:" . $event->impulseDate .
         "</p>";
 }
 
-if($DEBUG==1) {
+if ($DEBUG == 1) {
     echo_endpoints($eventOne);
     echo_event($eventOne);
     echo_endpoints($eventTwo);

@@ -4,10 +4,8 @@
 <head>
     <title>Seismokraft</title>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="all"
-          href="jqueryStyle/css/Seismokraft/jquery-ui-1.10.3.custom.min.css">
+
     <link href="seismokraft.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>
 </head>
 <body>
 <div id="applicationWindow">
