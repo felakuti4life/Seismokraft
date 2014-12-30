@@ -1,3 +1,4 @@
+//Much of this script is from Boris Smus' excellent Web API demos.
 /*
  * Copyright 2013 Boris Smus. All Rights Reserved.
 
@@ -21,7 +22,7 @@ var smooth_factor = 0.8;
 var fft_buf_size = 2048;
 
 //Q fudge factor
-var QUAL_MUL = 30;
+var Q_mul = 30;
 
 function AudioChain(url1, url2, url3) {
     this.fft = context.createAnalyser();
@@ -166,7 +167,6 @@ AudioChain.prototype.getFrequencyValue = function(freq) {
 /* CROSSFADING */
 AudioChain.prototype.crossfade = function(element) {
     var x = parseInt(element.value) / parseInt(element.max);
-    //TODO: make this a three way thing
     var gain1;
     if (x > 0.5) gain1 = 0;
     else gain1 = Math.cos(x * Math.PI);
@@ -191,7 +191,7 @@ AudioChain.prototype.changeFreq = function(element) {
 };
 
 AudioChain.prototype.changeQ = function(element) {
-    this.filter.Q.value = element.value * QUAL_MUL;
+    this.filter.Q.value = element.value * Q_mul;
 };
 
 AudioChain.prototype.toggleFilter = function(element) {

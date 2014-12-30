@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'On');
 /****************************
  * SEISMOKRAFT 1.0
  * by Ethan Geller and Elizabeth Davis
@@ -21,6 +22,10 @@
  */
 
 /** PARAMETERS */
+
+//caught exception backup seismic URL
+$backupAudioURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01';
+
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
 $eventTwoIndex = 4;
@@ -62,7 +67,7 @@ $url = $FDSN_URL .
     "&format=" . "xml" .
     "&limit=" . "8" .
     "&nodata=" . $NODATA;
-
+if($DEBUG) echo 'First URL:' . $url;
 $xml = file_get_contents($url);
 $quakeTable = new SimpleXMLElement($xml);
 
@@ -98,6 +103,7 @@ class SeismicEvent
     var $stationAudioURL;
     var $stationPlotURL;
     var $audioBuffer;
+    var $failed = false;
 
     function __construct($eventIndex)
     {
@@ -130,84 +136,108 @@ class SeismicEvent
     public function setNetworkAndStations()
     {
         global $FDSN_URL, $NODATA;
-        $stationUrl = $FDSN_URL .
-            "station/1/query?" .
-            "starttime=" . "2013-06-07T01:00:00" .
-            "&endtime=" . $this->impulseDate .
-            "&level=" . "station" .
-            "&format=" . "xml" .
-            "&lat=" . strval($this->location->lat) .
-            "&lon=" . strval($this->location->lng) .
-            "&maxradius=" . "6.0" .
-            "&nodata=" . $NODATA;
-        $stationXml = file_get_contents($stationUrl);
-        $station_table = new SimpleXMLElement($stationXml);
+        try {
+            $stationUrl = $FDSN_URL .
+                "station/1/query?" .
+                "starttime=" . "2013-06-07T01:00:00" .
+                "&endtime=" . $this->impulseDate .
+                "&level=" . "station" .
+                "&format=" . "xml" .
+                "&lat=" . strval($this->location->lat) .
+                "&lon=" . strval($this->location->lng) .
+                "&maxradius=" . "6.0" .
+                "&nodata=" . $NODATA;
 
-        $this->stationUrlTest = $stationUrl;
-        $this->nearestNetworkCode = $station_table->Network[0]['code'];
-        //TODO: Implement a search for closest station to event. For now, first station alphabetically is retrieved.
-        $this->nearestStationCode = $station_table->Network[0]->Station[0]['code'];
+            $stationXml = file_get_contents($stationUrl);
+            $station_table = new SimpleXMLElement($stationXml);
+
+            $this->stationUrlTest = $stationUrl;
+            $this->nearestNetworkCode = $station_table->Network[0]['code'];
+            //TODO: Implement a search for closest station to event. For now, first station alphabetically is retrieved.
+            $this->nearestStationCode = $station_table->Network[0]->Station[0]['code'];
+        }
+        catch(Exception $e){
+            $this->failed = true;
+            echo 'Warning: '.$e->getMessage() . '\n';
+        }
     }
 
     public function setChannelAndLocation($i)
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES;
+        try {
+            //How many channel attempts will occur before we give up
+            $MAX_CHANNEL_ATTEMPTS = 20;
 
-        //How many channel attempts will occur before we give up
-        $MAX_CHANNEL_ATTEMPTS = 20;
+            $channelUrl = $FDSN_URL .
+                "station/1/query?" .
+                "net=" . $this->nearestNetworkCode .
+                "&sta=" . $this->nearestStationCode .
+                "&starttime=" . "2013-06-07T01:00:00" .
+                "&endtime=" . $this->impulseDate .
+                "&level=" . "channel" .
+                "&format=" . "xml" .
+                "&nodata=" . $NODATA;
+            $channelXml = file_get_contents($channelUrl);
+            $channel_table = new SimpleXMLElement($channelXml);
 
-        $channelUrl = $FDSN_URL .
-            "station/1/query?" .
-            "net=" . $this->nearestNetworkCode .
-            "&sta=" . $this->nearestStationCode .
-            "&starttime=" . "2013-06-07T01:00:00" .
-            "&endtime=" . $this->impulseDate .
-            "&level=" . "channel" .
-            "&format=" . "xml" .
-            "&nodata=" . $NODATA;
-        $channelXml = file_get_contents($channelUrl);
-        $channel_table = new SimpleXMLElement($channelXml);
+            $this->channelUrlTest = $channelUrl;
 
-        $this->channelUrlTest = $channelUrl;
-
-        $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
-        $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
-        if ($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
-        //use -- for empty location codes
-        if ($this->location_code_is_empty()) $this->locationCode = '--';
-        if ($this->channelCode != 'BHZ') $this->setChannelAndLocation($i + 1);
+            $this->channelCode = $channel_table->Network->Station->Channel[$i]['code'];
+            $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
+            if ($CHECK_MORE_LOCATION_CODES) $this->check_further_location_codes($MAX_CHANNEL_ATTEMPTS, $channel_table);
+            //use -- for empty location codes
+            if ($this->location_code_is_empty()) $this->locationCode = '--';
+            if ($this->channelCode != 'BHZ') $this->setChannelAndLocation($i + 1);
+        }
+        catch(Exception $e){
+            $this->failed = true;
+            echo 'Warning: '.$e->getMessage();
+        }
     }
 
     public function setAudioAndPlotURL()
     {
-        $IRIS_URL = "http://service.iris.edu/irisws/";
+        global $backupAudioURL;
+        try {
+            $IRIS_URL = "http://service.iris.edu/irisws/";
 
-        $this->stationAudioURL = $IRIS_URL .
-            "timeseries/1/query?" .
-            "net=" . $this->nearestNetworkCode .
-            "&sta=" . $this->nearestStationCode .
-            "&cha=" . $this->channelCode .
-            "&start=" . $this->timeSeriesStartDate .
-            "&dur=" . "8000" .
-            "&envelope=" . "true" .
-            "&output=" . "audio" .
-            "&audiocompress=" . "true" .
-            "&audiosamplerate=" . "44100" .
-            "&loc=" . $this->locationCode;
+            $this->stationAudioURL = $IRIS_URL .
+                "timeseries/1/query?" .
+                "net=" . $this->nearestNetworkCode .
+                "&sta=" . $this->nearestStationCode .
+                "&cha=" . $this->channelCode .
+                "&start=" . $this->timeSeriesStartDate .
+                "&dur=" . "8000" .
+                "&envelope=" . "true" .
+                "&output=" . "audio" .
+                "&audiocompress=" . "true" .
+                "&audiosamplerate=" . "44100" .
+                "&loc=" . $this->locationCode;
 
-        $this->stationPlotURL = $IRIS_URL .
-            "timeseries/1/query?" .
-            "net=" . $this->nearestNetworkCode .
-            "&sta=" . $this->nearestStationCode .
-            "&cha=" . $this->channelCode .
-            "&start=" . $this->timeSeriesStartDate .
-            "&dur=" . "8000" .
-            "&envelope=" . "true" .
-            "&output=" . "plot" .
-            "&loc=" . $this->locationCode;
+            $this->stationPlotURL = $IRIS_URL .
+                "timeseries/1/query?" .
+                "net=" . $this->nearestNetworkCode .
+                "&sta=" . $this->nearestStationCode .
+                "&cha=" . $this->channelCode .
+                "&start=" . $this->timeSeriesStartDate .
+                "&dur=" . "8000" .
+                "&envelope=" . "true" .
+                "&output=" . "plot" .
+                "&loc=" . $this->locationCode;
 
-        $this->audioBuffer = file_get_contents($this->stationAudioURL);
+            $this->audioBuffer = file_get_contents($this->stationAudioURL);
+        }
+        catch(Exception $e){
+            $this->failed = true;
+            echo 'Warning: '.$e->getMessage();
+        }
+
+        //use the backup
+        if($this->failed){
+            $this->stationAudioURL = $backupAudioURL;
+        }
     }
 
     /** Check down channel list for other location codes */

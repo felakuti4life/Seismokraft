@@ -1,9 +1,9 @@
 /**
  * Created by Ethan on 12/27/14.
  */
-context = new (window.AudioContext || window.webkitAudioContext)();
 
-//fix naming cruft
+//Restore peace and unity among the browsers
+context = new (window.AudioContext || window.webkitAudioContext)();
 if (!context.createGain)
     context.createGain = context.createGainNode;
 if (!context.createDelay)
@@ -32,7 +32,6 @@ function playSound(buffer, time) {
 }
 
 function loadSounds(obj, soundMap, callback) {
-    // Array-ify
     var names = [];
     var paths = [];
     for (var name in soundMap) {

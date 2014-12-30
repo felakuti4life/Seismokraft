@@ -1,7 +1,5 @@
-<html>
 <?php require_once('getSeismicData.php'); ?>
 <!DOCTYPE html>
-
 <head>
     <title>Seismokraft: Audio Processor 2</title>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -12,7 +10,7 @@
 <div id="applicationWindow">
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvk54xl6pCp98naC9huck8a_qEblkdYiY&amp;sensor=false"
         type="text/javascript"></script>
-<script type="text/javascript">
+<!--
 /****************************
  SEISMOKRAFT 1.0
  by Ethan Geller and Elizabeth Davis
@@ -34,32 +32,9 @@
  SUMMARY: This script is passed the seismic data/ArrayBuffers from getSeismicData.php and handles all of the webAudio API implementation.
 
  */
+ -->
 
 
-
-
-//alternate method via CORS request
-var eventOneAudioURL = "<?php echo $eventOne->stationAudioURL ?>";
-var eventTwoAudioURL = "<?php echo $eventTwo->stationAudioURL ?>";
-var eventThreeAudioURL = "<?php echo $eventThree->stationAudioURL ?>";
-
-
-
-
-var eventOneBuffer = null;
-var eventTwoBuffer = null;
-var eventThreeBuffer = null;
-// Fix prefixing
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-var context = new AudioContext();
-
-
-context.decodeAudioData(eventOneAudio, function(buffer){eventOneBuffer = buffer});
-context.decodeAudioData(eventTwoAudio, function(buffer){eventTwoBuffer = buffer});
-context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buffer});
-
-
-</script>
 <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
         <h1><a href="<?php echo $eventOne->stationAudioURL; ?>">1</a></h1>
@@ -120,10 +95,10 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
     <p>
     <p><button style="display: block">Play/pause</button>
     <h2>CROSSFADE</h2>
-    <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);">3</p>
+    <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);" oninput="sample.crossfade(this);">3</p>
 
     <h2>TUNE</h2>
-    <p>slow<input type="range" min="0" step="0.01" max = "100" value="3" onchange="sample.setPlaybackRate(this)"></p>
+    <p>slow<input type="range" min="0" step="0.01" max = "100" value="3" onchange="sample.setPlaybackRate(this);" oninput="sample.setPlaybackRate(this);"></p>
 
     <h2>FILTER</h2>
     <p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
@@ -146,9 +121,9 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
     <p><input type="radio" name="filtertype" value="7" class="audioFx" checked
               onclick="sample.changeFilterType(7)"> all pass</p>
     <h4>Frequency</h4>
-    <p>10 Hz<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);">22.5 kHz</p>
+    <p>10 Hz<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);" oninput="sample.changeFreq(this);">22.5 kHz</p>
     <h4>Q</h4>
-    <p>narrow<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);">wide</p>
+    <p>narrow<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);" oninput="sample.changeQ(this);">wide</p>
 
     <canvas></canvas>
     <script src="AudioLoader.js"></script>
@@ -163,4 +138,3 @@ context.decodeAudioData(eventThreeAudio, function(buffer){eventThreeBuffer = buf
     </script>
 </div>
 </body>
-</html>
