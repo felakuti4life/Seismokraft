@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 'On');
+
 /****************************
  * SEISMOKRAFT 1.0
  * by Ethan Geller and Elizabeth Davis
@@ -25,6 +25,7 @@ ini_set('display_errors', 'On');
 
 //caught exception backup seismic URL
 $backupAudioURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01';
+$backupPlotURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=plot&loc=01';
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
@@ -32,7 +33,9 @@ $eventTwoIndex = 4;
 $eventThreeIndex = 7;
 
 //Whether we are printing debug statements
-$DEBUG = true;
+$DEBUG = false;
+
+if($DEBUG) ini_set('display_errors', 'On');
 
 //whether we check for further location codes
 $CHECK_MORE_LOCATION_CODES = false;
@@ -199,7 +202,7 @@ class SeismicEvent
 
     public function setAudioAndPlotURL()
     {
-        global $backupAudioURL;
+        global $backupAudioURL, $backupPlotURL;
         try {
             $IRIS_URL = "http://service.iris.edu/irisws/";
 
@@ -237,6 +240,7 @@ class SeismicEvent
         //use the backup
         if($this->failed){
             $this->stationAudioURL = $backupAudioURL;
+            $this->stationPlotURL = $backupPlotURL;
         }
     }
 
@@ -289,7 +293,7 @@ function echo_event($event)
         "</p>";
 }
 
-if ($DEBUG == 1) {
+if ($DEBUG) {
     echo_endpoints($eventOne);
     echo_event($eventOne);
     echo_endpoints($eventTwo);

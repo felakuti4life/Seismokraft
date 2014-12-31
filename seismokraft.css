@@ -47,22 +47,26 @@
 	padding-left: 2%;
 }
 .transport {
+    height: 300px;
 	width: 30%;
 	float: left;
 	margin-right: 2%;
 }
+
 #transportOne {
- background-image: "<?php echo $eventOne->stationPlotURL ?> "
+ background-image: "<?php echo $eventOne->stationPlotURL ?> ";
 }
 #transportTwo {
- background-image: "<?php echo $eventTwo->stationPlotURL ?> "
+ background-image: "<?php echo $eventTwo->stationPlotURL ?> ";
 }
 #transportThree {
- background-image: "<?php echo $eventThree->stationPlotURL ?> "
+ background-image: "<?php echo $eventThree->stationPlotURL ?> ";
 }
+
 #map-canvas {
 	width: 80%;
 }
+
 #eventsInfo {
 	vertical-align: middle;
 }

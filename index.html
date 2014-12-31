@@ -1,108 +1,121 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Seismokraft</title>
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Seismokraft</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
-<!--<script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>-->
+    <!--<script type="text/javascript" src="jqueryStyle/js/jquery-ui-1.10.3.custom.min.js"></script>-->
     <script src="AudioLoader.js"></script>
     <script src="AudioChain.js"></script>
     <script language="javascript" type="text/javascript">
-        $(document).ready(function(){
-            $('#seismokraftApp').load("AudioProcessor2.php #applicationWindow", function(){
-                $("#loadingPrompt").fadeOut(400, function(){
+        $(document).ready(function () {
+            $('#seismokraftApp').load("AudioProcessor2.php", function () {
+                $("#loadingPrompt").fadeOut(400, function () {
                     $("#loadingPrompt").hide();
                 });
                 var sample = new AudioChain('http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01',
                         'sound.wav',
                         'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01');
-                document.querySelector('button').addEventListener('click', function() {
+                document.querySelector('button').addEventListener('click', function () {
                     sample.togglePlayback()
                 });
             });
         });
-
     </script>
-<style type="text/css">
-#container {
-	background-color: #CC9;
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 10px;
-	padding-right: 0;
-	padding-bottom: 20px;
-	padding-left: 0;
-	border-radius: 10px;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-#footer {
-	text-align: right;
-	padding-right: 5px;
-	text-decoration: none;
-	color: #666666;
-}
-a {
-	text-decoration: none;
-	color: #FF3333;
-}
+    <style type="text/css">
+        #container {
+            background-color: #CC9;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 10px;
+            padding-right: 0;
+            padding-bottom: 20px;
+            padding-left: 0;
+            border-radius: 10px;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        }
 
-a:hover{
-	color:#FF6666;
-}
+        #footer {
+            text-align: right;
+            padding-right: 5px;
+            text-decoration: none;
+            color: #666666;
+        }
 
-#title {
-	font-size: 36px;
-	font-weight: bold;
-	text-transform: uppercase;
-	color: #59371A;
-	letter-spacing: 1.5em;
-	text-align: center;
-}
-#loadingPrompt {
-	font-size: 16px;
-	color: #3B3B3B;
-	letter-spacing: 0.2em;
-	text-align: center;
-}
-#seismokraftApp {
-	vertical-align: middle;
-	width: 95%;
-	padding-top: 30px;
-	padding-right: 5%;
-	padding-bottom: 30px;
-	padding-left: 5%;
-}
-</style>
-<link href="seismokraft.css" rel="stylesheet" type="text/css" />
+        a {
+            text-decoration: none;
+            color: #FF3333;
+        }
+
+        a:hover {
+            color: #FF6666;
+        }
+
+        #title {
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #59371A;
+            letter-spacing: 1.5em;
+            text-align: center;
+        }
+
+        #loadingPrompt {
+            font-size: 16px;
+            color: #3B3B3B;
+            letter-spacing: 0.2em;
+            text-align: center;
+        }
+
+        #seismokraftApp {
+            vertical-align: middle;
+            width: 95%;
+            padding-top: 30px;
+            padding-right: 5%;
+            padding-bottom: 30px;
+            padding-left: 5%;
+        }
+    </style>
+    <link href="seismokraft.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
 
 <p>&nbsp;</p>
+
 <p>&nbsp;</p>
+
 <div id="container">
-  <p>&nbsp;</p>
-  <div id="title">seismokraft</div>
-  <p>&nbsp;</p>
-  <div id="seismokraftApp">
-    <div id="loadingPrompt">
-      <p>Fetching data from IRIS servers...</p>
-      <p><img src="images/ajax-loader.gif" width="220" height="19" alt="loader" /></p>
-      <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+    <div id="title">seismokraft</div>
+    <p>&nbsp;</p>
+
+    <div id="seismokraftApp">
+        <div id="loadingPrompt">
+            <p>Fetching data from IRIS servers...</p>
+
+            <p><img src="images/ajax-loader.gif" width="220" height="19" alt="loader"/></p>
+
+            <p>&nbsp;</p>
+        </div>
     </div>
-  </div>
-  <div id="underConstruction">
-  <p>
-  Seismokraft is a web-based seismic sonification application currently under development.
-  </p>
-  <div id="gitHubButton">
-    <p>
-      <a href="https://github.com/felakuti4life/Seismokraft">track the progress of Seismokraft</a>
-    </p>
-  </div>
-  </div>
-  <div id="footer">Layout, design and code by <a href="http://ethangeller.com">Ethan Geller</a>. Research by Elizabeth Davis.</div>
+    <div id="underConstruction">
+        <p>
+            Seismokraft is a web-based seismic sonification application currently under development.
+        </p>
+
+        <div id="gitHubButton">
+            <p>
+                <a href="https://github.com/felakuti4life/Seismokraft">track the progress of Seismokraft</a>
+            </p>
+        </div>
+    </div>
+    <div id="footer">Layout, design and code by <a href="http://ethangeller.com">Ethan Geller</a>. Research by Elizabeth
+        Davis.
+    </div>
 </div>
 <p>&nbsp;</p>
 </body>
