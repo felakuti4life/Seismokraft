@@ -182,16 +182,18 @@ AudioChain.prototype.crossfade = function(element) {
 
 /* FILTERING */
 AudioChain.prototype.changeFreq = function(element) {
+    var x = parseInt(element.value) / parseInt(element.max);
     var minValue = 40;
     var maxValue = context.sampleRate / 2;
     var numberOfOctaves = Math.log(maxValue / minValue) / Math.LN2;
-    var multiplier = Math.pow(2, numberOfOctaves * (element.value - 1.0));
+    var multiplier = Math.pow(2, numberOfOctaves * (x - 1.0));
 
     this.filter.frequency.value = maxValue * multiplier;
 };
 
 AudioChain.prototype.changeQ = function(element) {
-    this.filter.Q.value = element.value * Q_mul;
+    var x = parseInt(element.value) / parseInt(element.max);
+    this.filter.Q.value = x * Q_mul;
 };
 
 AudioChain.prototype.toggleFilter = function(element) {

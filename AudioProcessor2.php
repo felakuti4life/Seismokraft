@@ -3,11 +3,22 @@
 <head>
     <title>Seismokraft: Audio Processor 2</title>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-
+    <script src="output_bubble.js"></script>
     <link href="seismokraft.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="applicationWindow">
+    <style type="text/css">
+        #transportOne {
+            background-image: "<?php echo $eventOne->stationPlotURL ?> ";
+        }
+        #transportTwo {
+            background-image: "<?php echo $eventTwo->stationPlotURL ?> ";
+        }
+        #transportThree {
+            background-image: "<?php echo $eventThree->stationPlotURL ?> ";
+        }
+    </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJe8gm6aPqX280tYK6yCjms2NgA_fUzh0&amp;sensor=false"
             type="text/javascript"></script>
     <script>
@@ -145,13 +156,17 @@
         <button style="display: block">Play/pause</button>
     <h2>CROSSFADE</h2>
 
-    <p>1<input type="range" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);"
-               oninput="sample.crossfade(this);">3</p>
+    <p><input type="range" name="crossfade" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);"
+               oninput="sample.crossfade(this);">
+        <output for="crossfade">1</output>
+    </p>
 
     <h2>TUNE</h2>
 
-    <p>slow<input type="range" min="0" step="0.01" max="100" value="3" onchange="sample.setPlaybackRate(this);"
-                  oninput="sample.setPlaybackRate(this);"></p>
+    <p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="sample.setPlaybackRate(this);"
+                  oninput="sample.setPlaybackRate(this);">
+        <output for="tune">1</output>
+    </p>
 
     <h2>FILTER</h2>
 
@@ -184,12 +199,15 @@
               onclick="sample.changeFilterType(7)"> all pass</p>
     <h4>Frequency</h4>
 
-    <p>10 Hz<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
-                   oninput="sample.changeFreq(this);">22.5 kHz</p>
+    <p>10 Hz<input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
+                   oninput="sample.changeFreq(this);">22.5 kHz
+        <output for="filterFreq">1</output></p>
     <h4>Q</h4>
 
-    <p>narrow<input type="range" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
-                    oninput="sample.changeQ(this);">wide</p>
+    <p>narrow<input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
+                    oninput="sample.changeQ(this);">wide
+        <output for="filterQ">1</output>
+    </p>
 
     <canvas></canvas>
     <script src="AudioLoader.js"></script>
