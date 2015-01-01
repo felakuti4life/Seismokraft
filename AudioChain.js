@@ -51,12 +51,10 @@ AudioChain.prototype.togglePlayback = function() {
         this.ctl1.source[offName](0);
         this.ctl2.source[offName](0);
         this.ctl3.source[offName](0);
-        // Stop playback
 
         /* VISUALIZER STUFF */
         this.startOffset += context.currentTime - this.startTime;
         console.log('paused at', this.startOffset);
-        // Save the position of the play head.
     } else {
         /* FILTER STUFF */
         var filter = context.createBiquadFilter();

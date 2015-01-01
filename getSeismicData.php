@@ -138,7 +138,7 @@ class SeismicEvent
 
     public function setNetworkAndStations()
     {
-        global $FDSN_URL, $NODATA;
+        global $FDSN_URL, $NODATA, $DEBUG;
         try {
             $stationUrl = $FDSN_URL .
                 "station/1/query?" .
@@ -161,14 +161,14 @@ class SeismicEvent
         }
         catch(Exception $e){
             $this->failed = true;
-            echo 'Warning: '.$e->getMessage() . '\n';
+            if($DEBUG) echo 'Warning: '.$e->getMessage() . '\n';
         }
     }
 
     public function setChannelAndLocation($i)
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
-        global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES;
+        global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES, $DEBUG;
         try {
             //How many channel attempts will occur before we give up
             $MAX_CHANNEL_ATTEMPTS = 20;
@@ -196,13 +196,13 @@ class SeismicEvent
         }
         catch(Exception $e){
             $this->failed = true;
-            echo 'Warning: '.$e->getMessage();
+            if($DEBUG) echo 'Warning: '.$e->getMessage();
         }
     }
 
     public function setAudioAndPlotURL()
     {
-        global $backupAudioURL, $backupPlotURL;
+        global $backupAudioURL, $backupPlotURL, $DEBUG;
         try {
             $IRIS_URL = "http://service.iris.edu/irisws/";
 
@@ -234,7 +234,7 @@ class SeismicEvent
         }
         catch(Exception $e){
             $this->failed = true;
-            echo 'Warning: '.$e->getMessage();
+            if($DEBUG) echo 'Warning: '.$e->getMessage();
         }
 
         //use the backup
