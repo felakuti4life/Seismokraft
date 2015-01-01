@@ -199,13 +199,13 @@
               onclick="sample.changeFilterType(7)"> all pass</p>
     <h4>Frequency</h4>
 
-    <p>10 Hz<input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
-                   oninput="sample.changeFreq(this);">22.5 kHz
+    <p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
+                   oninput="sample.changeFreq(this);">
         <output for="filterFreq">1</output></p>
     <h4>Q</h4>
 
-    <p>narrow<input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
-                    oninput="sample.changeQ(this);">wide
+    <p><input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
+                    oninput="sample.changeQ(this);">
         <output for="filterQ">1</output>
     </p>
 

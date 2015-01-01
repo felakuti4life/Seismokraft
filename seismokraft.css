@@ -82,8 +82,8 @@ input{
 }
 
 input[type=range] {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 100%; /* Specific width is required for Firefox. */
+    -webkit-appearance: none;
+    width: 100%;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -91,13 +91,13 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]:focus {
-    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+    outline: none;
 }
 
 input[type=range]::-ms-track {
     width: 100%;
     cursor: pointer;
-    background: transparent; /* Hides the slider so custom styles can be added */
+    background: transparent;
     border-color: transparent;
     color: transparent;
 }
@@ -112,11 +112,10 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 3px;
     background: #ffffff;
     cursor: pointer;
-    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+    margin-top: -14px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 
-/* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     border: 1px solid #000000;
@@ -127,7 +126,6 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
-/* All the same stuff for IE */
 input[type=range]::-ms-thumb {
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     border: 1px solid #000000;
@@ -191,14 +189,14 @@ input[type=range]:focus::-ms-fill-upper {
     background: #367ebd;
 }
 
-/* output */
+/* output bubbles */
 output {
     position: absolute;
-    background-image: linear-gradient(top, #444444, #999999);
+    background-image: linear-gradient(top, #ABABAC, #FFFFFF);
     width: 40px;
     height: 30px;
     text-align: center;
-    color: white;
+    color: black;
     border-radius: 10px;
     display: inline-block;
     font: bold 15px/30px Georgia;

@@ -149,7 +149,7 @@ AudioChain.prototype.draw = function() {
 
 /* PLAYBACK RATE CHANGE */
 AudioChain.prototype.setPlaybackRate = function(element) {
-    var x = parseInt(element.value) / parseInt(element.max);
+    var x = parseFloat(element.value) / parseFloat(element.max);
     minPlaybackRate = 0.1;
     maxPlaybackRate = 4.0;
     rate = (x*(maxPlaybackRate-minPlaybackRate) + minPlaybackRate);
@@ -166,7 +166,7 @@ AudioChain.prototype.getFrequencyValue = function(freq) {
 
 /* CROSSFADING */
 AudioChain.prototype.crossfade = function(element) {
-    var x = parseInt(element.value) / parseInt(element.max);
+    var x = parseFloat(element.value) / parseFloat(element.max);
     var gain1;
     if (x > 0.5) gain1 = 0;
     else gain1 = Math.cos(x * Math.PI);
@@ -182,7 +182,7 @@ AudioChain.prototype.crossfade = function(element) {
 
 /* FILTERING */
 AudioChain.prototype.changeFreq = function(element) {
-    var x = parseInt(element.value) / parseInt(element.max);
+    var x = parseFloat(element.value) / parseFloat(element.max);
     var minValue = 40;
     var maxValue = context.sampleRate / 2;
     var numberOfOctaves = Math.log(maxValue / minValue) / Math.LN2;
@@ -192,7 +192,7 @@ AudioChain.prototype.changeFreq = function(element) {
 };
 
 AudioChain.prototype.changeQ = function(element) {
-    var x = parseInt(element.value) / parseInt(element.max);
+    var x = parseFloat(element.value) / parseFloat(element.max);
     this.filter.Q.value = x * Q_mul;
 };
 
