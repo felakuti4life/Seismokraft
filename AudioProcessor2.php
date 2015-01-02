@@ -11,15 +11,15 @@
 <div id="applicationWindow">
 <style type="text/css">
     #transportOne {
-        background-image: "<?php echo $eventOne->stationPlotURL ?> ";
+        background-image: "<?php echo $eventOne->stationPlotURL ?>";
     }
 
     #transportTwo {
-        background-image: "<?php echo $eventTwo->stationPlotURL ?> ";
+        background-image: "<?php echo $eventTwo->stationPlotURL ?>";
     }
 
     #transportThree {
-        background-image: "<?php echo $eventThree->stationPlotURL ?> ";
+        background-image: "<?php echo $eventThree->stationPlotURL ?>";
     }
 </style>
 
@@ -93,19 +93,23 @@
 
  */
  -->
-
+<button style="display: block" class="btn">PLAY</button>
 <div id="map-canvas"></div>
 <div id="transportWindow">
     <div class="transport" id="transportOne">
+        <img src="<?php echo $eventOne->stationPlotURL ?>">
         <div id="transportSliderOne"></div>
     </div>
     <div class="transport" id="transportTwo">
+        <img src="<?php echo $eventTwo->stationPlotURL ?>">
         <div id="transportSliderTwo"></div>
     </div>
     <div class="transport" id="transportThree">
+        <img src="<?php echo $eventThree->stationPlotURL ?>">
         <div id="transportSliderThree"></div>
     </div>
 </div>
+
 <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
         <h1><a href="<?php echo $eventOne->stationAudioURL; ?>">1</a></h1>
@@ -148,110 +152,125 @@
     </div>
 </div>
 
+<br>
+<p>
+<div id="crossfade_panel">
+    <h2>CROSSFADE</h2>
 
+    <p><input type="range" name="crossfade" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);"
+              oninput="sample.crossfade(this);">
+        <output for="crossfade">1</output>
+    </p>
+</div>
 
-    <button style="display: block">Play/pause</button>
-<h2>CROSSFADE</h2>
+<div id="tune_panel">
+    <h2>TUNE</h2>
 
-<p><input type="range" name="crossfade" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);"
-          oninput="sample.crossfade(this);">
-    <output for="crossfade">1</output>
+    <p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="sample.setPlaybackRate(this);"
+              oninput="sample.setPlaybackRate(this);">
+        <output for="tune">1</output>
+    </p>
+</div>
+
+<div id="filter_panel">
+    <h2>FILTER</h2>
+
+    <p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
+        <label for="c1"><span></span>enable</label></p>
+    <h4>Type</h4>
+
+    <input type="radio" id="lowpass" value="0" class="audioFx" checked
+           onclick="sample.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label>
+
+    <input type="radio" id="hipass" value="1" class="audioFx" checked
+           onclick="sample.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label>
+
+    <input type="radio" id="bandpass" value="2" class="audioFx" checked
+           onclick="sample.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label>
+
+    <input type="radio" id="lowshelf" value="3" class="audioFx" checked
+           onclick="sample.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label>
+
+    <input type="radio" id="hishelf" value="4" class="audioFx" checked
+           onclick="sample.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label>
+
+    <input type="radio" id="peaking" value="5" class="audioFx" checked
+           onclick="sample.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label>
+
+    <input type="radio" id="notch" value="6" class="audioFx" checked
+           onclick="sample.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label>
+
+    <input type="radio" id="allpass" value="7" class="audioFx" checked
+           onclick="sample.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label>
+    <h4>Frequency</h4>
+
+    <p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
+              oninput="sample.changeFreq(this);">
+        <output for="filterFreq">1</output>
+    </p>
+    <h4>Q</h4>
+
+    <p><input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
+              oninput="sample.changeQ(this);">
+        <output for="filterQ">1</output>
+    </p>
+</div>
+
+<div id="fft_panel">
+    <canvas></canvas>
+    <script src="AudioLoader.js"></script>
+    <script src="AudioChain.js"></script>
+    <script>
+        var sample = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
+            '<?php echo $eventTwo->stationAudioURL; ?>',
+            '<?php echo $eventThree->stationAudioURL; ?>');
+        document.querySelector('button').addEventListener('click', function () {
+            sample.togglePlayback()
+        });
+
+        $.onload(function () {
+            var el, newPoint, newPlace, offset;
+
+            // Select all range inputs, watch for change
+            $("input[type='range']").change(function () {
+
+                // Cache this for efficiency
+                el = $(this);
+
+                // Measure width of range input
+                width = el.width();
+
+                // Figure out placement percentage between left and right of input
+                newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+
+                // Janky value to get pointer to line up better
+                offset = -1.3;
+
+                // Prevent bubble from going beyond left or right (unsupported browsers)
+                if (newPoint < 0) {
+                    newPlace = 0;
+                }
+                else if (newPoint > 1) {
+                    newPlace = width;
+                }
+                else {
+                    newPlace = width * newPoint + offset;
+                    offset -= newPoint;
+                }
+
+                // Move bubble
+                el
+                    .next("output")
+                    .css({
+                        left: newPlace,
+                        marginLeft: offset + "%"
+                    })
+                    .text(el.val());
+            })
+                .trigger('change');
+        });
+    </script>
+</div>
 </p>
-
-<h2>TUNE</h2>
-
-<p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="sample.setPlaybackRate(this);"
-          oninput="sample.setPlaybackRate(this);">
-    <output for="tune">1</output>
-</p>
-
-<h2>FILTER</h2>
-
-<p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
-    <label for="c1"><span></span>enable</label></p>
-<h4>Type</h4>
-
-<input type="radio" id="lowpass" value="0" class="audioFx" checked
-          onclick="sample.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label>
-
-<input type="radio" id="hipass" value="1" class="audioFx" checked
-          onclick="sample.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label>
-
-<input type="radio" id="bandpass" value="2" class="audioFx" checked
-          onclick="sample.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label>
-
-<input type="radio" id="lowshelf" value="3" class="audioFx" checked
-          onclick="sample.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label>
-
-<input type="radio" id="hishelf" value="4" class="audioFx" checked
-          onclick="sample.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label>
-
-<input type="radio" id="peaking" value="5" class="audioFx" checked
-          onclick="sample.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label>
-
-<input type="radio" id="notch" value="6" class="audioFx" checked
-          onclick="sample.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label>
-
-<input type="radio" id="allpass" value="7" class="audioFx" checked
-          onclick="sample.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label>
-<h4>Frequency</h4>
-
-<p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
-          oninput="sample.changeFreq(this);">
-    <output for="filterFreq">1</output>
-</p>
-<h4>Q</h4>
-
-<p><input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
-          oninput="sample.changeQ(this);">
-    <output for="filterQ">1</output>
-</p>
-
-<canvas></canvas>
-<script src="AudioLoader.js"></script>
-<script src="AudioChain.js"></script>
-<script>
-    var sample = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
-        '<?php echo $eventTwo->stationAudioURL; ?>',
-        '<?php echo $eventThree->stationAudioURL; ?>');
-    document.querySelector('button').addEventListener('click', function () {
-        sample.togglePlayback()
-    });
-
-    $.onload(function() {
-        var el, newPoint, newPlace, offset;
-
-        // Select all range inputs, watch for change
-        $("input[type='range']").change(function() {
-
-            // Cache this for efficiency
-            el = $(this);
-
-            // Measure width of range input
-            width = el.width();
-
-            // Figure out placement percentage between left and right of input
-            newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
-
-            // Janky value to get pointer to line up better
-            offset = -1.3;
-
-            // Prevent bubble from going beyond left or right (unsupported browsers)
-            if (newPoint < 0) { newPlace = 0; }
-            else if (newPoint > 1) { newPlace = width; }
-            else { newPlace = width * newPoint + offset; offset -= newPoint; }
-
-            // Move bubble
-            el
-                .next("output")
-                .css({
-                    left: newPlace,
-                    marginLeft: offset + "%"
-                })
-                .text(el.val());
-        })
-            .trigger('change');
-    });
-</script>
 </div>
 </body>

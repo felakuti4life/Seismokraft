@@ -2,9 +2,9 @@
 /* Seismokraft Shared CSS */
 .eventInfoBlock {
 	padding: 5px;
-	margin-right: 4%;
+	margin-right: 0%;
 	float: left;
-	width: 20%;
+	width: 32%;
 	border: 2px solid #CCCCCC;
 	border-radius: 5px;
 	background-color: #FFE292;
@@ -39,18 +39,22 @@
 }
 #transportWindow {
 	height: 400px;
-	width: 90%;
+	width: 100%;
 	margin-top: 20px;
 	border: 2px solid #CCCCCC;
 	clear: both;
 	text-align: center;
-	padding-left: 2%;
+	padding-left: 0%;
 }
 .transport {
     height: 300px;
-	width: 30%;
+	width: 33%;
 	float: left;
-	margin-right: 2%;
+	margin-right: 0%;
+}
+
+.transport img {
+    width: 90%;
 }
 
 #map-canvas {
@@ -79,6 +83,29 @@
 input{
     background-color: #555555;
     color: #000000;
+}
+
+.btn{
+    border : solid 4px #7d7d7d;
+    border-radius : 12px 12px 3px 3px ;
+    width: 100%;
+    height: 40px;
+    moz-border-radius : 12px 11px 3px 3px ;
+    -webkit-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+    -moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+    box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+    font-size : 20px;
+    color : #e3e3e3;
+    padding : 1px 10px;
+    background : #000000;
+    background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#8a8a8a));
+    background : -moz-linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    background : -webkit-linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    background : -o-linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    background : -ms-linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    background : linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#8a8a8a',GradientType=0 );
+
 }
 
 input[type=range] {
