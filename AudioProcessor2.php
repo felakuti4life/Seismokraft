@@ -3,7 +3,6 @@
 <head>
     <title>Seismokraft: Audio Processor 2</title>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="output_bubble.js"></script>
     <link href="seismokraft.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -176,29 +175,29 @@
     <label for="c1"><span></span>enable</label></p>
 <h4>Type</h4>
 
-<p><input type="radio" id="lowpass" value="0" class="audioFx" checked
-          onclick="sample.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label></p>
+<input type="radio" id="lowpass" value="0" class="audioFx" checked
+          onclick="sample.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label>
 
-<p><input type="radio" id="hipass" value="1" class="audioFx" checked
-          onclick="sample.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label></p>
+<input type="radio" id="hipass" value="1" class="audioFx" checked
+          onclick="sample.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label>
 
-<p><input type="radio" id="bandpass" value="2" class="audioFx" checked
-          onclick="sample.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label></p>
+<input type="radio" id="bandpass" value="2" class="audioFx" checked
+          onclick="sample.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label>
 
-<p><input type="radio" id="lowshelf" value="3" class="audioFx" checked
-          onclick="sample.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label></p>
+<input type="radio" id="lowshelf" value="3" class="audioFx" checked
+          onclick="sample.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label>
 
-<p><input type="radio" id="hishelf" value="4" class="audioFx" checked
-          onclick="sample.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label></p>
+<input type="radio" id="hishelf" value="4" class="audioFx" checked
+          onclick="sample.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label>
 
-<p><input type="radio" id="peaking" value="5" class="audioFx" checked
-          onclick="sample.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label></p>
+<input type="radio" id="peaking" value="5" class="audioFx" checked
+          onclick="sample.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label>
 
-<p><input type="radio" id="notch" value="6" class="audioFx" checked
-          onclick="sample.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label></p>
+<input type="radio" id="notch" value="6" class="audioFx" checked
+          onclick="sample.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label>
 
-<p><input type="radio" id="allpass" value="7" class="audioFx" checked
-          onclick="sample.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label></p>
+<input type="radio" id="allpass" value="7" class="audioFx" checked
+          onclick="sample.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label>
 <h4>Frequency</h4>
 
 <p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
@@ -216,11 +215,46 @@
 <script src="AudioLoader.js"></script>
 <script src="AudioChain.js"></script>
 <script>
-    var sample = new AudioChain('http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01',
-        'sound.wav',
-        'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01');
+    var sample = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
+        '<?php echo $eventTwo->stationAudioURL; ?>',
+        '<?php echo $eventThree->stationAudioURL; ?>');
     document.querySelector('button').addEventListener('click', function () {
         sample.togglePlayback()
+    });
+
+    $.onload(function() {
+        var el, newPoint, newPlace, offset;
+
+        // Select all range inputs, watch for change
+        $("input[type='range']").change(function() {
+
+            // Cache this for efficiency
+            el = $(this);
+
+            // Measure width of range input
+            width = el.width();
+
+            // Figure out placement percentage between left and right of input
+            newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+
+            // Janky value to get pointer to line up better
+            offset = -1.3;
+
+            // Prevent bubble from going beyond left or right (unsupported browsers)
+            if (newPoint < 0) { newPlace = 0; }
+            else if (newPoint > 1) { newPlace = width; }
+            else { newPlace = width * newPoint + offset; offset -= newPoint; }
+
+            // Move bubble
+            el
+                .next("output")
+                .css({
+                    left: newPlace,
+                    marginLeft: offset + "%"
+                })
+                .text(el.val());
+        })
+            .trigger('change');
     });
 </script>
 </div>
