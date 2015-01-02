@@ -3,6 +3,8 @@
 <head>
     <title>Seismokraft: Audio Processor 2</title>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJe8gm6aPqX280tYK6yCjms2NgA_fUzh0&amp;sensor=false"
+            type="text/javascript"></script>
     <link href="seismokraft.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -20,8 +22,7 @@
         background-image: "<?php echo $eventThree->stationPlotURL ?> ";
     }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJe8gm6aPqX280tYK6yCjms2NgA_fUzh0&amp;sensor=false"
-        type="text/javascript"></script>
+
 <script>
     /***************************
      GOOGLE MAP IMPLEMENTATION
@@ -93,7 +94,18 @@
  */
  -->
 
-
+<div id="map-canvas"></div>
+<div id="transportWindow">
+    <div class="transport" id="transportOne">
+        <div id="transportSliderOne"></div>
+    </div>
+    <div class="transport" id="transportTwo">
+        <div id="transportSliderTwo"></div>
+    </div>
+    <div class="transport" id="transportThree">
+        <div id="transportSliderThree"></div>
+    </div>
+</div>
 <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
         <h1><a href="<?php echo $eventOne->stationAudioURL; ?>">1</a></h1>
@@ -135,25 +147,9 @@
         </p>
     </div>
 </div>
-<br>
 
-<div id="map-canvas"></div>
-<div id="transportWindow">
-    <div class="transport" id="transportOne">
-        <div id="transportSliderOne"></div>
-    </div>
-    <div class="transport" id="transportTwo">
-        <div id="transportSliderTwo"></div>
-    </div>
-    <div class="transport" id="transportThree">
-        <div id="transportSliderThree"></div>
-    </div>
-</div>
 
-<div id="mainVolume">Content for id "mainVolume" Goes Here</div>
-<p>
 
-<p>
     <button style="display: block">Play/pause</button>
 <h2>CROSSFADE</h2>
 
