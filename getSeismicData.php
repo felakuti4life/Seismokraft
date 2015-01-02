@@ -36,7 +36,7 @@ $eventThreeIndex = 7;
 $DEBUG = false;
 
 if($DEBUG) ini_set('display_errors', 'On');
-
+else ini_set('display_errors', 'Off');
 //whether we check for further location codes
 $CHECK_MORE_LOCATION_CODES = false;
 
