@@ -112,7 +112,7 @@
 
 <div id="eventsInfo">
     <div class="eventInfoBlock" id="eventOneSummary">
-        <h1><a href="<?php echo $eventOne->stationAudioURL; ?>">1</a></h1>
+        <h1>1</h1>
 
         <h3>M<?php echo $eventOne->magnitude; ?></h3>
         <h4><?php echo $eventOne->locationDescription; ?></h4>
@@ -125,7 +125,7 @@
         </p>
     </div>
     <div class="eventInfoBlock" id="eventTwoSummary">
-        <h1><a href="<?php echo $eventTwo->stationAudioURL; ?>">2</a></h1>
+        <h1>2</h1>
 
         <h3>M<?php echo $eventTwo->magnitude; ?></h3>
         <h4><?php echo $eventTwo->locationDescription; ?></h4>
@@ -138,7 +138,7 @@
         </p>
     </div>
     <div class="eventInfoBlock" id="eventThreeSummary">
-        <h1><a href="<?php echo $eventThree->stationAudioURL; ?>">3</a></h1>
+        <h1>3</h1>
 
         <h3>M<?php echo $eventThree->magnitude; ?></h3>
         <h4><?php echo $eventThree->locationDescription; ?></h4>
@@ -158,61 +158,61 @@
 <div id="crossfade_panel">
     <h2>CROSSFADE</h2>
 
-    <p><input type="range" name="crossfade" min="0" step="0.01" max="100" value="0" onchange="sample.crossfade(this);"
-              oninput="sample.crossfade(this);">
+    <p><input type="range" name="crossfade" min="0" step="0.01" max="100" value="0" onchange="audio.crossfade(this);"
+              oninput="audio.crossfade(this);">
         <output for="crossfade">1</output>
     </p>
 </div>
 
 <div id="tune_panel">
-    <h2>TUNE</h2>
+    <h2>TUNE</h2><div class="statusLabel" id="tune_status">44100 audios per second (x1.00)</div>
 
-    <p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="sample.setPlaybackRate(this);"
-              oninput="sample.setPlaybackRate(this);">
+    <p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="audio.setPlaybackRate(this);"
+              oninput="audio.setPlaybackRate(this);">
         <output for="tune">1</output>
     </p>
 </div>
 
 <div id="filter_panel">
-    <h2>FILTER</h2>
+    <h2>FILTER</h2><div class="statusLabel" id="filter_enabled_status">enabled</div>
 
-    <p><input type="checkbox" id="c1" checked="false" onchange="sample.toggleFilter(this);">
+    <p><input type="checkbox" id="c1" checked="false" onchange="audio.toggleFilter(this);">
         <label for="c1"><span></span>enable</label></p>
-    <h4>Type</h4>
+    <h4>Type: </h4><div class="statusLabel" id="filter_type_status">lowpass</div>
 
     <input type="radio" id="lowpass" value="0" class="audioFx" checked
-           onclick="sample.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label>
+           onclick="audio.changeFilterType(0)"> <label for="lowpass"><span><span></span></span>Low Pass</label>
 
     <input type="radio" id="hipass" value="1" class="audioFx" checked
-           onclick="sample.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label>
+           onclick="audio.changeFilterType(1)"> <label for="hipass"><span><span></span></span>Hi Pass</label>
 
     <input type="radio" id="bandpass" value="2" class="audioFx" checked
-           onclick="sample.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label>
+           onclick="audio.changeFilterType(2)"> <label for="bandpass"><span><span></span></span>Band Pass</label>
 
     <input type="radio" id="lowshelf" value="3" class="audioFx" checked
-           onclick="sample.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label>
+           onclick="audio.changeFilterType(3)"> <label for="lowshelf"><span><span></span></span>Low Shelf</label>
 
     <input type="radio" id="hishelf" value="4" class="audioFx" checked
-           onclick="sample.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label>
+           onclick="audio.changeFilterType(4)"> <label for="hishelf"><span><span></span></span>Hi Shelf</label>
 
     <input type="radio" id="peaking" value="5" class="audioFx" checked
-           onclick="sample.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label>
+           onclick="audio.changeFilterType(5)"> <label for="peaking"><span><span></span></span>Peaking</label>
 
     <input type="radio" id="notch" value="6" class="audioFx" checked
-           onclick="sample.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label>
+           onclick="audio.changeFilterType(6)"> <label for="notch"><span><span></span></span>Notch</label>
 
     <input type="radio" id="allpass" value="7" class="audioFx" checked
-           onclick="sample.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label>
-    <h4>Frequency</h4>
+           onclick="audio.changeFilterType(7)"> <label for="allpass"><span><span></span></span>All Pass</label>
+    <h4>Frequency</h4><div class="statusLabel" id="filter_freq_status"></div>
 
-    <p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="sample.changeFreq(this);"
-              oninput="sample.changeFreq(this);">
+    <p><input type="range" name="filterFreq" min="0" step="0.001" max="1" value="0" onchange="audio.changeFreq(this);"
+              oninput="audio.changeFreq(this);">
         <output for="filterFreq">1</output>
     </p>
-    <h4>Q</h4>
+    <h4>Q</h4><div class="statusLabel" id="filter_q_status"></div>
 
-    <p><input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="sample.changeQ(this);"
-              oninput="sample.changeQ(this);">
+    <p><input type="range" name="filterQ" min="0" step="0.001" max="1" value="0" onchange="audio.changeQ(this);"
+              oninput="audio.changeQ(this);">
         <output for="filterQ">1</output>
     </p>
 </div>
@@ -222,11 +222,11 @@
     <script src="AudioLoader.js"></script>
     <script src="AudioChain.js"></script>
     <script>
-        var sample = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
+        var audio = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
             '<?php echo $eventTwo->stationAudioURL; ?>',
             '<?php echo $eventThree->stationAudioURL; ?>');
         document.querySelector('button').addEventListener('click', function () {
-            sample.togglePlayback()
+            audio.togglePlayback()
         });
 
         $.onload(function () {

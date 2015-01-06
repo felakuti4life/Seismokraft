@@ -1,4 +1,4 @@
-//Much of this script is from Boris Smus' excellent Web API demos.
+//Much of this script is from Boris Smus' excellent Web API demos:
 /*
  * Copyright 2013 Boris Smus. All Rights Reserved.
 
@@ -54,7 +54,6 @@ AudioChain.prototype.togglePlayback = function() {
 
         /* VISUALIZER STUFF */
         this.startOffset += context.currentTime - this.startTime;
-        console.log('paused at', this.startOffset);
     } else {
         /* FILTER STUFF */
         var filter = context.createBiquadFilter();
@@ -63,16 +62,12 @@ AudioChain.prototype.togglePlayback = function() {
         filter.connect(this.fft);
 
         /* VISUALIZER STUFF */
-
         this.startTime = context.currentTime;
-        console.log('started at', this.startOffset);
 
-        // Start playback, but make sure we stay in bound of the buffer.
-        // Start visualizer.
         requestAnimFrame(this.draw.bind(this));
 
         /*CROSSFADE STUFF */
-        // Create two sources.
+        // Create three sources.
         this.ctl1 = createSource(this.event1);
         this.ctl2 = createSource(this.event2);
         this.ctl3 = createSource(this.event3);
@@ -83,8 +78,7 @@ AudioChain.prototype.togglePlayback = function() {
         this.ctl1.source[onName](0);
         this.ctl2.source[onName](0);
         this.ctl3.source[onName](0);
-        // Set the initial crossfade to be just source 1.
-        this.crossfade(0);
+        this.crossfade(0.01);
 
         function createSource(buffer) {
             var source = context.createBufferSource();
@@ -116,9 +110,12 @@ AudioChain.prototype.draw = function() {
     var canvas = document.querySelector('canvas');
     var drawContext = canvas.getContext('2d');
     //dynamic width
-    canvas.width = window.innerWidth
+    w = window.innerWidth
         || document.documentElement.clientWidth
         || document.body.clientWidth;
+    //width of container
+    w = w * 0.95;
+    canvas.width = w;
     canvas.height = h;
     //Frequency domain
     for (var i = 0; i < this.fft.frequencyBinCount; i++) {
@@ -150,6 +147,7 @@ AudioChain.prototype.draw = function() {
 
 /* PLAYBACK RATE CHANGE */
 AudioChain.prototype.setPlaybackRate = function(element) {
+    var tuneLabel = document.getElementById('tune_status');
     var x = parseFloat(element.value) / parseFloat(element.max);
     minPlaybackRate = 0.1;
     maxPlaybackRate = 4.0;
@@ -157,6 +155,7 @@ AudioChain.prototype.setPlaybackRate = function(element) {
     this.ctl1.source.playbackRate.value = rate;
     this.ctl2.source.playbackRate.value = rate;
     this.ctl3.source.playbackRate.value = rate;
+    tuneLabel.innerHTML = (rate*context.sampleRate).toFixed(0) + " samples per second (x" + rate.toFixed(2) + ")";
 };
 
 AudioChain.prototype.getFrequencyValue = function(freq) {
@@ -178,11 +177,11 @@ AudioChain.prototype.crossfade = function(element) {
     this.ctl1.gainNode.gain.value = gain1;
     this.ctl2.gainNode.gain.value = gain2;
     this.ctl3.gainNode.gain.value = gain3;
-    console.log("Crossfade at " + x + ": gain 1 " + gain1 + " gain 2 " + gain2 + " gain 3 " + gain3);
 };
 
 /* FILTERING */
 AudioChain.prototype.changeFreq = function(element) {
+    var freqLabel = document.getElementById('filter_freq_status');
     var x = parseFloat(element.value) / parseFloat(element.max);
     var minValue = 40;
     var maxValue = context.sampleRate / 2;
@@ -190,34 +189,40 @@ AudioChain.prototype.changeFreq = function(element) {
     var multiplier = Math.pow(2, numberOfOctaves * (x - 1.0));
 
     this.filter.frequency.value = maxValue * multiplier;
+    freqLabel.innerHTML = this.filter.frequency.value.toFixed(2) + " Hz";
 };
 
 AudioChain.prototype.changeQ = function(element) {
+    var qLabel = document.getElementById('filter_q_status');
     var x = parseFloat(element.value) / parseFloat(element.max);
     this.filter.Q.value = x * Q_mul;
+    qLabel.innerHTML = this.filter.Q.value.toFixed(2);
 };
 
 AudioChain.prototype.toggleFilter = function(element) {
+    var enabledLabel = document.getElementById('filter_enabled_status');
     this.ctl1.gainNode.disconnect(0);
     this.ctl2.gainNode.disconnect(0);
     this.ctl3.gainNode.disconnect(0);
     this.filter.disconnect(0);
 
     if (element.checked) {
-        // Connect through the filter.
         this.ctl1.gainNode.connect(this.filter);
         this.ctl2.gainNode.connect(this.filter);
         this.ctl3.gainNode.connect(this.filter);
         this.filter.connect(this.fft);
+
+        enabledLabel.innerHTML = "enabled";
     } else {
-        // Otherwise, connect directly.
         this.ctl1.gainNode.connect(this.fft);
         this.ctl2.gainNode.connect(this.fft);
         this.ctl3.gainNode.connect(this.fft);
+        enabledLabel.innerHTML = "disabled";
     }
 };
 
 AudioChain.prototype.changeFilterType = function(num) {
+    var typeLabel = document.getElementById('filter_type_status');
     switch(num) {
         case 0:
             this.filter.type = "lowpass";
@@ -244,4 +249,5 @@ AudioChain.prototype.changeFilterType = function(num) {
             this.filter.type = "allpass";
             break;
     }
+    typeLabel.innerHTML = this.filter.type;
 };

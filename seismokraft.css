@@ -5,16 +5,16 @@
 	margin-right: 0%;
 	float: left;
 	width: 31%;
-	outline: 2px solid #CCCCCC;
+	outline: 2px solid #CCCC99;
 	border-radius: 5px;
 	background-color: #A8A4AB;
+    color: #292736;
 }
 .eventInfoBlock h1 {
 	padding: 1px;
 	text-align: center;
 	font-weight: bolder;
 	font-variant: small-caps;
-	color: #333333;
 	text-decoration: underline;
 }
 .eventInfoBlock h3 {
@@ -22,7 +22,6 @@
 	text-align: center;
 	font-weight: bolder;
 	text-decoration: underline overline;
-	color: #000000;
 }
 .eventInfoBlock h4 {
 	text-transform: capitalize;
@@ -39,21 +38,27 @@
 }
 #transportWindow {
 	width: 100%;
-	margin-top: 4px;
+	margin-top: 14px;
 	clear: both;
 	text-align: center;
 	padding-left: 0%;
 }
 .transport {
-    height: 300px;
 	width: 33%;
 	float: left;
 	margin-right: 0%;
 }
 
 .transport img {
-    width: 90%;
+    width: 100%;
     border-radius: 4px;
+    outline: 2px solid #CCCC99;
+
+}
+
+.statusLabel{
+    float: right;
+    margin-right: 2%;
 }
 
 #map-canvas {
@@ -78,9 +83,14 @@
 	clear:both;
 }
 
+#underConstruction #gitHubButton a:hover{
+    background-color: #34201D;
+}
+
 #crossfade_panel {
     padding-bottom: 10px;
     background-color: #B39C96;
+    color: #60160F;
 }
 
 #tune_panel {
@@ -108,7 +118,7 @@ input{
 }
 
 .btn{
-    border-radius : 12px 12px 3px 3px ;
+    border-radius : 12px 12px 12px 12px ;
     width: 100%;
     height: 40px;
     moz-border-radius : 12px 11px 3px 3px ;
