@@ -1,13 +1,13 @@
 @charset "UTF-8";
 /* Seismokraft Shared CSS */
 .eventInfoBlock {
-	padding: 5px;
+	padding: 1%;
 	margin-right: 0%;
 	float: left;
-	width: 32%;
-	border: 2px solid #CCCCCC;
+	width: 31%;
+	outline: 2px solid #CCCCCC;
 	border-radius: 5px;
-	background-color: #FFE292;
+	background-color: #A8A4AB;
 }
 .eventInfoBlock h1 {
 	padding: 1px;
@@ -38,10 +38,8 @@
 	padding-top: -5px;
 }
 #transportWindow {
-	height: 400px;
 	width: 100%;
-	margin-top: 20px;
-	border: 2px solid #CCCCCC;
+	margin-top: 4px;
 	clear: both;
 	text-align: center;
 	padding-left: 0%;
@@ -55,6 +53,7 @@
 
 .transport img {
     width: 90%;
+    border-radius: 4px;
 }
 
 #map-canvas {
@@ -67,16 +66,39 @@
 #underConstruction{
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #59371A;
+	color: #CCCCCC;
 	text-align: center;
 	clear:both;
 	width: 90%;
 }
 #underConstruction #gitHubButton a {
-	background-color: #FFCC66;
-	border: 2px solid #CC3333;
+	background-color: #A2A0A7;
+	border: 2px solid #EE6666;
 	text-decoration:none;
 	clear:both;
+}
+
+#crossfade_panel {
+    padding-bottom: 10px;
+    background-color: #B39C96;
+}
+
+#tune_panel {
+    padding-bottom: 10px;
+    background-color: #888890;
+}
+
+#filter_panel {
+    padding-bottom: 10px;
+    background-color: #A57F73;
+}
+
+#fft_panel {
+    background-color: #000000;
+}
+
+form {
+    clear: both;
 }
 
 /* Inputs */
@@ -86,7 +108,6 @@ input{
 }
 
 .btn{
-    border : solid 4px #7d7d7d;
     border-radius : 12px 12px 3px 3px ;
     width: 100%;
     height: 40px;
@@ -95,15 +116,15 @@ input{
     -moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
     box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
     font-size : 20px;
-    color : #e3e3e3;
+    color : #001584;
     padding : 1px 10px;
-    background : #000000;
-    background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#8a8a8a));
-    background : -moz-linear-gradient(top, #000000 0%, #8a8a8a 100%);
-    background : -webkit-linear-gradient(top, #000000 0%, #8a8a8a 100%);
-    background : -o-linear-gradient(top, #000000 0%, #8a8a8a 100%);
-    background : -ms-linear-gradient(top, #000000 0%, #8a8a8a 100%);
-    background : linear-gradient(top, #000000 0%, #8a8a8a 100%);
+    background : #CCCC99;
+    background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#CCCC99), color-stop(100%,#8a8a8a));
+    background : -moz-linear-gradient(top, #CCCC99 0%, #8a8a8a 100%);
+    background : -webkit-linear-gradient(top, #CCCC99 0%, #8a8a8a 100%);
+    background : -o-linear-gradient(top, #CCCC99 0%, #8a8a8a 100%);
+    background : -ms-linear-gradient(top, #CCCC99 0%, #8a8a8a 100%);
+    background : linear-gradient(top, #CCCC99 0%, #8a8a8a 100%);
     filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#8a8a8a',GradientType=0 );
 
 }

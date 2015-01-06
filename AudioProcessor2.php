@@ -154,6 +154,7 @@
 
 <br>
 <p>
+<form>
 <div id="crossfade_panel">
     <h2>CROSSFADE</h2>
 
@@ -215,7 +216,7 @@
         <output for="filterQ">1</output>
     </p>
 </div>
-
+</form>
 <div id="fft_panel">
     <canvas></canvas>
     <script src="AudioLoader.js"></script>

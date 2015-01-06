@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-var w = 640;
+var w = 1028;
 var h = 360;
 
 var smooth_factor = 0.8;
@@ -115,7 +115,10 @@ AudioChain.prototype.draw = function() {
     var width = Math.floor(1/this.freqs.length, 10);
     var canvas = document.querySelector('canvas');
     var drawContext = canvas.getContext('2d');
-    canvas.width = w;
+    //dynamic width
+    canvas.width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
     canvas.height = h;
     //Frequency domain
     for (var i = 0; i < this.fft.frequencyBinCount; i++) {
@@ -124,7 +127,7 @@ AudioChain.prototype.draw = function() {
         var height = h * percent;
         var offset = h - height - 1;
         var barWidth = w/this.fft.frequencyBinCount;
-        var hue = i/this.fft.frequencyBinCount * 120;
+        var hue = i/this.fft.frequencyBinCount * -120;
         drawContext.fillStyle = 'hsl(' + hue + ', 100%, 30%)';
         drawContext.fillRect(i * barWidth, offset, barWidth, height);
     }
