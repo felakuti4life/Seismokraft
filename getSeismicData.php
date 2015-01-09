@@ -34,7 +34,7 @@ $eventTwoIndex = 4;
 $eventThreeIndex = 7;
 
 //Whether we are printing debug statements
-$DEBUG = true;
+$DEBUG = false;
 
 if($DEBUG) ini_set('display_errors', 'On');
 else ini_set('display_errors', 'Off');
@@ -205,7 +205,7 @@ class SeismicEvent
 
     public function setAudioAndPlotURL()
     {
-        global $backupAudioURL, $backupPlotURL, $DEBUG;
+        global $backupAudioURL, $backupPlotURL, $backupSampleRate, $DEBUG;
         try {
             $IRIS_URL = "http://service.iris.edu/irisws/";
 
@@ -244,6 +244,7 @@ class SeismicEvent
         if($this->failed){
             $this->stationAudioURL = $backupAudioURL;
             $this->stationPlotURL = $backupPlotURL;
+            $this->sampleRate = $backupSampleRate;
         }
     }
 
