@@ -24,7 +24,7 @@ var fft_buf_size = 2048;
 //Q fudge factor
 var Q_mul = 30;
 
-function AudioChain(url1, url2, url3) {
+function AudioChain(url1, url2, url3, Fs) {
     this.fft = context.createAnalyser();
 
     this.fft.connect(context.destination);
@@ -41,6 +41,8 @@ function AudioChain(url1, url2, url3) {
     this.isPlaying = false;
     this.startTime = 0;
     this.startOffset = 0;
+
+    this.Fs = Fs;
 }
 
 // Toggle playback
@@ -155,7 +157,8 @@ AudioChain.prototype.setPlaybackRate = function(element) {
     this.ctl1.source.playbackRate.value = rate;
     this.ctl2.source.playbackRate.value = rate;
     this.ctl3.source.playbackRate.value = rate;
-    tuneLabel.innerHTML = (rate*context.sampleRate).toFixed(0) + " samples per second (x" + rate.toFixed(2) + ")";
+    var playbackVsFs = (rate*context.sampleRate) / this.Fs;
+    tuneLabel.innerHTML = (rate*context.sampleRate).toFixed(0) + " samples per second (x" + playbackVsFs.toFixed(2) + " actual speed)";
 };
 
 AudioChain.prototype.getFrequencyValue = function(freq) {

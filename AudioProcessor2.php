@@ -165,7 +165,7 @@
 </div>
 
 <div id="tune_panel">
-    <h2>TUNE</h2><div class="statusLabel" id="tune_status">44100 audios per second (x1.00)</div>
+    <h2>TUNE</h2><div class="statusLabel" id="tune_status">44100 samples per second</div>
 
     <p><input type="range" name="tune" min="0" step="0.01" max="100" value="3" onchange="audio.setPlaybackRate(this);"
               oninput="audio.setPlaybackRate(this);">
@@ -224,7 +224,8 @@
     <script>
         var audio = new AudioChain('<?php echo $eventOne->stationAudioURL; ?>',
             '<?php echo $eventTwo->stationAudioURL; ?>',
-            '<?php echo $eventThree->stationAudioURL; ?>');
+            '<?php echo $eventThree->stationAudioURL; ?>',
+            <?php echo $eventOne->sampleRate ?>);
         document.querySelector('button').addEventListener('click', function () {
             audio.togglePlayback()
         });
