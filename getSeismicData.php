@@ -233,12 +233,15 @@ class SeismicEvent
                 "&output=" . "plot" .
                 "&loc=" . $this->locationCode;
 
-            $this->audioBuffer = file_get_contents($this->stationAudioURL);
+            //$this->audioBuffer = file_get_contents($this->stationAudioURL);
         }
         catch(Exception $e){
             $this->failed = true;
             if($DEBUG) echo 'Warning: '.$e->getMessage();
         }
+        //check for 404s
+        $this->is404($this->stationAudioURL);
+        $this->is404($this->stationPlotURL);
 
         //use the backup
         if($this->failed){
@@ -257,6 +260,24 @@ class SeismicEvent
             $this->locationCode = $channel_table->Network->Station->Channel[$i]['locationCode'];
             $i++;
         }
+    }
+
+    /*
+     * @return true if the url specified returns a 404 result code
+     */
+    public function is404($url){
+        $handle = curl_init($url);
+        curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+        $response = curl_exec($handle);
+        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+        if($httpCode == 404) {
+            $this->failed = true;
+            curl_close($handle);
+            return true;
+        }
+
+        curl_close($handle);
+        return false;
     }
 
     /**
