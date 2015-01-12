@@ -24,17 +24,17 @@
 /** PARAMETERS */
 
 //caught exception backup seismic URL
-$backupAudioURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01';
-$backupPlotURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=plot&loc=01';
+$backupAudioURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=audio&audiocompress=true&audiosamplerate=44100&loc=01&scale=AUTO';
+$backupPlotURL = 'http://service.iris.edu/irisws/timeseries/1/query?net=CM&sta=CAP2&cha=BHZ&start=2014-09-20T14:00:40.0000&dur=8000&envelope=true&output=plot&loc=01&scale=AUTO';
 $backupSampleRate = '20.0';
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
-$eventTwoIndex = 4;
-$eventThreeIndex = 7;
+$eventTwoIndex = 2;
+$eventThreeIndex = 4;
 
 //Whether we are printing debug statements
-$DEBUG = false;
+$DEBUG = true;
 
 if($DEBUG) ini_set('display_errors', 'On');
 else ini_set('display_errors', 'Off');
@@ -150,7 +150,9 @@ class SeismicEvent
                 "&format=" . "xml" .
                 "&lat=" . strval($this->location->lat) .
                 "&lon=" . strval($this->location->lng) .
-                "&maxradius=" . "6.0" .
+                "&maxradius=" . "4.0" .
+                "&includeavailability=" . "true" .
+                "&includerestricted=" . "false" .
                 "&nodata=" . $NODATA;
 
             $stationXml = file_get_contents($stationUrl);
@@ -220,6 +222,7 @@ class SeismicEvent
                 "&output=" . "audio" .
                 "&audiocompress=" . "true" .
                 "&audiosamplerate=" . "44100" .
+                "&scale=" . "AUTO" .
                 "&loc=" . $this->locationCode;
 
             $this->stationPlotURL = $IRIS_URL .
@@ -231,6 +234,7 @@ class SeismicEvent
                 "&dur=" . "8000" .
                 "&envelope=" . "true" .
                 "&output=" . "plot" .
+                "&scale=" . "AUTO" .
                 "&loc=" . $this->locationCode;
 
             //$this->audioBuffer = file_get_contents($this->stationAudioURL);
