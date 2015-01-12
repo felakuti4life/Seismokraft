@@ -1,6 +1,3 @@
-/**
- * Created by Ethan on 12/27/14.
- */
 
 //Restore peace and unity among the browsers
 context = new (window.AudioContext || window.webkitAudioContext)();
@@ -101,4 +98,3 @@ BufferLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
 };
-

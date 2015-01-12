@@ -116,7 +116,7 @@ AudioChain.prototype.draw = function() {
         || document.documentElement.clientWidth
         || document.body.clientWidth;
     //width of container
-    w = w * 0.95;
+    w = w * 0.93;
     canvas.width = w;
     canvas.height = h;
     //Frequency domain
