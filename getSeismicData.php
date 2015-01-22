@@ -39,7 +39,7 @@ $eventThreeIndex = 2;
 $LENGTH = 8000;
 
 //Whether we are printing debug statements
-$DEBUG = true;
+$DEBUG = false;
 
 if($DEBUG) ini_set('display_errors', 'On');
 else ini_set('display_errors', 'Off');
