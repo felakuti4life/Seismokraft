@@ -21,6 +21,8 @@
  * SUMMARY: This script handles all of the server side queries to the IRIS server and pulls metadata about the recent seismic events, as well as time series data.
  */
 
+$ERROR = "<h3>ERROR: Something went wrong with this particular search. Try using different parameters and reloading.</h3>";
+$error_printed = false;
 /** PARAMETERS */
 
 //caught exception backup seismic URL
@@ -30,8 +32,11 @@ $backupSampleRate = '20.0';
 
 //set Seismic Event indices: 0 represents latest seismic event above the minimum magnitude given, 1 the event after that, etc.
 $eventOneIndex = 0;
-$eventTwoIndex = 2;
-$eventThreeIndex = 4;
+$eventTwoIndex = 1;
+$eventThreeIndex = 2;
+
+//in samples
+$LENGTH = 8000;
 
 //Whether we are printing debug statements
 $DEBUG = true;
@@ -60,6 +65,14 @@ $MAX_MAG = 9.0;
 //Our result code if our query fails:
 $NODATA = "404";
 
+//parse optional URL args
+if(isset($_GET["length"])) $LENGTH = floatval($_GET["length"]);
+if(isset($_GET["min_mag"])) $MIN_MAG = floatval($_GET["min_mag"]);
+if(isset($_GET["max_mag"])) $MAX_MAG = floatval($_GET["max_mag"]);
+if(isset($_GET["ev1"]) && !is_null($_GET["ev1"])) $eventOneIndex = intval($_GET["ev1"]);
+if(isset($_GET["ev2"]) && !is_null($_GET["ev1"])) $eventTwoIndex = intval($_GET["ev2"]);
+if(isset($_GET["ev3"]) && !is_null($_GET["ev1"])) $eventThreeIndex = intval($_GET["ev3"]);
+
 $url = $FDSN_URL .
     "event/1/query?" .
     "starttime=" . $START_TIME .
@@ -69,7 +82,7 @@ $url = $FDSN_URL .
     "&includeallorigins=" . "true" .
     "&orderby=" . "time" .
     "&format=" . "xml" .
-    "&limit=" . "8" .
+    "&limit=" . "16" .
     "&nodata=" . $NODATA;
 if($DEBUG) echo 'First URL:' . $url;
 $xml = file_get_contents($url);
@@ -108,6 +121,10 @@ class SeismicEvent
     var $stationPlotURL;
     var $audioBuffer;
     var $sampleRate;
+    var $maxRadius = 3.5;
+    var $networkIdx;
+    var $stationIdx;
+
     var $failed = false;
 
     function __construct($eventIndex)
@@ -123,7 +140,7 @@ class SeismicEvent
         $this->locationDescription = $event->description->text;
         $this->impulseDate = $origin->time->value;
         $this->magnitude = floatval($event->magnitude->mag->value);
-        $this->setNetworkAndStations();
+        $this->setNetworkAndStations(0,0);
         $this->setTimeSeriesStartDate();
         $this->setChannelAndLocation(0);
         $this->setAudioAndPlotURL();
@@ -138,9 +155,29 @@ class SeismicEvent
         $this->timeSeriesStartDate = substr_replace($dateString, ".0000", 19);
     }
 
-    public function setNetworkAndStations()
+    public function setNetworkAndStations($i, $k)
     {
         global $FDSN_URL, $NODATA, $DEBUG;
+        $MAX_NETWORK_ATTEMPTS = 5;
+        $MAX_STATION_ATTEMPTS = 10;
+        $MAX_RADIUS_ATTEMPT = 12;
+
+        if($k > $MAX_STATION_ATTEMPTS){
+            if($DEBUG) echo "Warning: Max station attempts reached! ";
+            $this->stationIdx =0;
+            $this->networkIdx++;
+            $this->setNetworkAndStations($this->networkIdx, $this->stationIdx);
+        }
+        else if($i > $MAX_NETWORK_ATTEMPTS){
+            if($DEBUG) echo "Warning: Max network attempts reached! ";
+            $this->stationIdx =0;
+            $this->networkIdx =0;
+            $this->maxRadius++;
+            $this->setNetworkAndStations($this->networkIdx, $this->stationIdx);
+        }
+
+        else if($this->maxRadius > $MAX_RADIUS_ATTEMPT) return;
+
         try {
             $stationUrl = $FDSN_URL .
                 "station/1/query?" .
@@ -150,7 +187,7 @@ class SeismicEvent
                 "&format=" . "xml" .
                 "&lat=" . strval($this->location->lat) .
                 "&lon=" . strval($this->location->lng) .
-                "&maxradius=" . "4.0" .
+                "&maxradius=" . strval($this->maxRadius) .
                 "&includeavailability=" . "true" .
                 "&includerestricted=" . "false" .
                 "&nodata=" . $NODATA;
@@ -159,13 +196,16 @@ class SeismicEvent
             $station_table = new SimpleXMLElement($stationXml);
 
             $this->stationUrlTest = $stationUrl;
-            $this->nearestNetworkCode = $station_table->Network[0]['code'];
+            $this->nearestNetworkCode = $station_table->Network[$i]['code'];
             //TODO: Implement a search for closest station to event. For now, first station alphabetically is retrieved.
-            $this->nearestStationCode = $station_table->Network[0]->Station[0]['code'];
+            $this->nearestStationCode = $station_table->Network[$i]->Station[$k]['code'];
         }
         catch(Exception $e){
             $this->failed = true;
-            if($DEBUG) echo 'Warning: '.$e->getMessage() . '\n';
+            if($DEBUG) echo 'Warning: '.$e->getMessage() . 'for Station URL: ' . $stationUrl;
+            $this->stationIdx++;
+            //$this->setNetworkAndStations($this->networkIdx, $this->stationIdx);
+
         }
     }
 
@@ -173,9 +213,16 @@ class SeismicEvent
     {
         //TODO: Modify getter to only pull waveforms from channels with code ?HZ
         global $FDSN_URL, $NODATA, $CHECK_MORE_LOCATION_CODES, $DEBUG;
+        //How many channel attempts will occur before we give up
+        $MAX_CHANNEL_ATTEMPTS = 10;
+        if ($i > $MAX_CHANNEL_ATTEMPTS) {
+            if($DEBUG) echo "Warning: Max Channel and Locations attempts reached!";
+            $this->stationIdx++;
+
+            $this->setNetworkAndStations($this->networkIdx,$this->stationIdx);
+        }
         try {
-            //How many channel attempts will occur before we give up
-            $MAX_CHANNEL_ATTEMPTS = 20;
+
 
             $channelUrl = $FDSN_URL .
                 "station/1/query?" .
@@ -207,7 +254,7 @@ class SeismicEvent
 
     public function setAudioAndPlotURL()
     {
-        global $backupAudioURL, $backupPlotURL, $backupSampleRate, $DEBUG;
+        global $backupAudioURL, $backupPlotURL, $backupSampleRate, $DEBUG, $ERROR, $LENGTH, $error_printed;
         try {
             $IRIS_URL = "http://service.iris.edu/irisws/";
 
@@ -217,7 +264,7 @@ class SeismicEvent
                 "&sta=" . $this->nearestStationCode .
                 "&cha=" . $this->channelCode .
                 "&start=" . $this->timeSeriesStartDate .
-                "&dur=" . "8000" .
+                "&dur=" . strval($LENGTH) .
                 "&envelope=" . "true" .
                 "&output=" . "audio" .
                 "&audiocompress=" . "true" .
@@ -231,7 +278,7 @@ class SeismicEvent
                 "&sta=" . $this->nearestStationCode .
                 "&cha=" . $this->channelCode .
                 "&start=" . $this->timeSeriesStartDate .
-                "&dur=" . "8000" .
+                "&dur=" . strval($LENGTH) .
                 "&envelope=" . "true" .
                 "&output=" . "plot" .
                 "&scale=" . "AUTO" .
@@ -252,6 +299,11 @@ class SeismicEvent
             $this->stationAudioURL = $backupAudioURL;
             $this->stationPlotURL = $backupPlotURL;
             $this->sampleRate = $backupSampleRate;
+            $this->locationDescription = "COLUMBIA";
+            $this->magnitude = 5.5;
+            $this->impulseDate = "2014-09-20T14:00:40.0000";
+            if(!$error_printed) echo $ERROR;
+            $error_printed = true;
         }
     }
 
@@ -295,15 +347,31 @@ class SeismicEvent
 
 
 $eventOne = new SeismicEvent($eventOneIndex);
+while($eventOne->failed){
+    $eventOneIndex++;
+    $eventOne = new SeismicEvent($eventOneIndex);
+}
+$eventTwoIndex = $eventOneIndex +1;
 $eventTwo = new SeismicEvent($eventTwoIndex);
+while($eventTwo->failed){
+    $eventTwoIndex++;
+    $eventTwo = new SeismicEvent($eventTwoIndex);
+}
+$eventThreeIndex = $eventTwoIndex + 1;
 $eventThree = new SeismicEvent($eventThreeIndex);
+while($eventThree->failed){
+    $eventThreeIndex++;
+    $eventThree = new SeismicEvent($eventThreeIndex);
+}
 
 /** UNIT TESTS */
 function echo_endpoints($event)
 {
     global $url;
     echo "<h5> quaketable url:" . $url . "</h5>";
+    echo "<h5> station and network query: " . $event->stationUrlTest . "</h5>";
     echo "<h5> channel and location query: " . $event->channelUrlTest . "</h5>";
+    echo "<h5> approx. radius away: " . $event->maxRadius . "</h5>";
     echo "<h5> audio query: <a href=\"" . $event->stationAudioURL . "\"> here </a></h5>";
 }
 
